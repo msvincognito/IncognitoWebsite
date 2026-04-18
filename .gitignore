@@ -84,8 +84,6 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
 # public
 
 # vuepress build output
@@ -93,7 +91,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Sveltekit cache directory
 .svelte-kit/
@@ -137,3 +134,96 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# -------------------------------------------------------
+# NEXT.JS
+# -------------------------------------------------------
+.next/
+out/
+.vercel
+
+# -------------------------------------------------------
+# SANITY
+# -------------------------------------------------------
+# Sanity Studio build output
+/studio/dist
+/studio/.sanity
+
+# -------------------------------------------------------
+# MEDUSA.JS
+# -------------------------------------------------------
+.medusa/
+medusa-db.sql
+
+# -------------------------------------------------------
+# IDE & EDITOR FILES
+# -------------------------------------------------------
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+Session.vim
+.netrwhist
+
+# Emacs
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# -------------------------------------------------------
+# OS FILES
+# -------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+
+# -------------------------------------------------------
+# TESTING
+# -------------------------------------------------------
+/coverage
+/test-results
+/playwright-report
+/playwright/.cache
+
+# -------------------------------------------------------
+# MISC
+# -------------------------------------------------------
+*.pem
+*.key
+*.cert
+.turbo
