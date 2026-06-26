@@ -8,7 +8,7 @@ export default defineConfig({
       title: 'MSV Incognito',
       description: 'Study Association for the Department of Advanced Computing Sciences at Maastricht University',
       logo: {
-        src: './src/assets/logo-white.svg',
+        src: './src/assets/logo.png',
         replacesTitle: true,
       },
       social: {
