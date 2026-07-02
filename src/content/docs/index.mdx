@@ -20,35 +20,57 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 </div>
 
 <div class="hero-section">
-  <h1>Empowering Tomorrow's Tech Leaders</h1>
-  <p>We are MSV Incognito — the study association for the Department of Advanced Computing Sciences at Maastricht University. Founded in 1994, we enrich the social, professional, and educational lives of our members.</p>
+  <div class="hero-eyebrow">Maastricht University &middot; Department of Advanced Computing Sciences &middot; Est. 1994</div>
+  <img src="/assets/logo.svg" alt="MSV Incognito" class="hero-logo" />
+  <h1>Building the Future of Computing, Together</h1>
+  <p class="hero-lead">For over 30 years, MSV Incognito has been the home for computing science students at Maastricht University &mdash; enriching lives through academic support, social connection, and professional growth.</p>
   <div class="hero-buttons">
-    <a href="/about" class="hero-btn hero-btn-primary">Learn More</a>
-    <a href="/contact" class="hero-btn hero-btn-secondary">Contact Us</a>
+    <a href="/about" class="hero-btn hero-btn-primary">Discover Who We Are</a>
+    <a href="/contact" class="hero-btn hero-btn-secondary">Get in Touch</a>
+  </div>
+</div>
+
+<div class="about-snippet">
+  <h2>More Than a Study Association</h2>
+  <div class="about-columns">
+    <div class="about-col">
+      <h3>Our Story</h3>
+      <p>Founded on <strong>March 28, 1994</strong>, MSV Incognito began as a small group of computing enthusiasts at Maastricht University. Today, we are a thriving community that mirrors the rapid growth of the Department of Advanced Computing Sciences.</p>
+    </div>
+    <div class="about-col">
+      <h3>Our Mission</h3>
+      <p>We exist to enrich the <strong>social, professional, and educational</strong> lives of our members. Through tutoring, career days, social events, and industry partnerships, we bridge the gap between academia and the real world.</p>
+    </div>
+    <div class="about-col">
+      <h3>Our Community</h3>
+      <p>Incognito is run by students, for students. Our committees organize everything from study sessions and game nights to international trips and company visits. There is a place for everyone here.</p>
+    </div>
   </div>
 </div>
 
 ## What We Do
 
-<CardGrid>
-  <LinkCard
-    title="Academic Support"
-    description="Personalized tutoring, study sessions, and workshops to enhance your technical skills."
-    href="/about"
-  />
-  <LinkCard
-    title="Social Events"
-    description="Networking opportunities, game nights, parties, and trips to fuel your social life."
-    href="/archive/events"
-  />
-  <LinkCard
-    title="Career Support"
-    description="Career days, company connections, and industry insights from leading organizations."
-    href="/careers"
-  />
-</CardGrid>
+<div class="feature-grid">
+  <a href="/about" class="feature-card">
+    <h3>Academic Support</h3>
+    <p>Personalized tutoring, study sessions, and workshops designed to help you master the unique challenges of our computing science program.</p>
+    <span class="feature-link">Learn more &rarr;</span>
+  </a>
+  <a href="/archive/events" class="feature-card">
+    <h3>Social Events</h3>
+    <p>Networking opportunities, game nights, parties, and trips that create a faculty-wide social environment where lasting friendships are formed.</p>
+    <span class="feature-link">See events &rarr;</span>
+  </a>
+  <a href="/careers" class="feature-card">
+    <h3>Career Support</h3>
+    <p>Career days, company connections, and industry insights from leading organizations to prepare you for life after graduation.</p>
+    <span class="feature-link">Explore careers &rarr;</span>
+  </a>
+</div>
 
 ## Our Sponsors
+
+We are proud to be supported by leading companies in the tech and healthcare industries.
 
 <div class="sponsor-grid">
   <a href="/sponsors/asml" class="sponsor-card" title="ASML">
@@ -63,18 +85,28 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
   <a href="/sponsors/medtronic" class="sponsor-card" title="Medtronic">
     <img src="/assets/sponsors/medtronic-logo.jpg" alt="Medtronic" />
   </a>
+  <a href="/sponsors/yer" class="sponsor-card" title="YER">
+    <img src="/assets/sponsors/yer-logo.svg" alt="YER" />
+  </a>
+  <a href="/sponsors/ortec" class="sponsor-card" title="ORTEC">
+    <img src="/assets/sponsors/ortec.svg" alt="ORTEC" />
+  </a>
   <a href="/sponsors/esaote" class="sponsor-card" title="ESAOTE">
     <img src="/assets/sponsors/LOGO_ESAOTE_2023_PAYOFF_ORIZZONTALE_COLOREPIATTO.png" alt="ESAOTE" />
   </a>
 </div>
 
-[View All Sponsors](/sponsors)
-
-## Latest News
-
-Stay tuned for upcoming events and announcements. Check our [events page](/archive/events) for the latest activities.
+<p class="sponsor-cta"><a href="/sponsors">View All Sponsors &rarr;</a></p>
 
 ---
 
-**Address:** Paul-Henri Spaaklaan 1, 16229 EN Maastricht  
-**Email:** [incognito@maastrichtuniversity.nl](mailto:incognito@maastrichtuniversity.nl)
+<div class="footer-contact">
+  <p><strong>MSV Incognito</strong></p>
+  <p>Paul-Henri Spaaklaan 1, 6229 EN Maastricht</p>
+  <p><a href="mailto:incognito@maastrichtuniversity.nl">incognito@maastrichtuniversity.nl</a></p>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/company/msv-incognito/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <span class="footer-sep">&middot;</span>
+    <a href="https://www.instagram.com/msvincognito/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+</div>
