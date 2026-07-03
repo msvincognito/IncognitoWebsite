@@ -1,0 +1,19 @@
+# Long-cache fingerprinted static assets
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Long-cache public assets (images, logos, SVGs)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Pagefind search index
+/pagefind/*
+  Cache-Control: public, max-age=86400
+
+# HTML files should revalidate frequently
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Sitemaps
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600

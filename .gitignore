@@ -112,3 +112,6 @@ $RECYCLE.BIN/
 *.key
 *.cert
 .turbo
+
+# Backup files
+*.backup
