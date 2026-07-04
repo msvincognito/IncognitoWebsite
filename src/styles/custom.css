@@ -114,7 +114,7 @@ html:not([data-has-sidebar]) .content-panel + .content-panel {
   border-top: none;
 }
 
-/* Top navbar for homepage (splash template) */
+/* Top navbar for homepage (splash template) - desktop */
 .top-nav {
   display: flex;
   justify-content: center;
@@ -139,6 +139,110 @@ html:not([data-has-sidebar]) .content-panel + .content-panel {
 .top-nav a:hover {
   color: var(--sl-color-white);
   background: var(--sl-color-accent-low);
+}
+
+/* Hide hamburger toggle on desktop */
+.nav-toggle,
+.nav-toggle-label {
+  display: none;
+}
+
+/* ===== MOBILE NAVIGATION (hamburger menu) ===== */
+@media (max-width: 768px) {
+  /* Hide the inline nav toggle checkbox always */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Show hamburger button */
+  .nav-toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    margin: 0.5rem 0 0 0.5rem;
+    background: var(--sl-color-gray-8);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    z-index: 100;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .nav-toggle-label:hover {
+    background: var(--sl-color-accent-low);
+  }
+
+  /* Hamburger icon (3 lines) */
+  .nav-hamburger,
+  .nav-hamburger::before,
+  .nav-hamburger::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--sl-color-gray-3);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-hamburger::before,
+  .nav-hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .nav-hamburger::before {
+    top: -8px;
+  }
+
+  .nav-hamburger::after {
+    top: 8px;
+  }
+
+  /* Animate to X when checkbox is checked */
+  .nav-toggle:checked ~ .nav-toggle-label .nav-hamburger {
+    background: transparent;
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label .nav-hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle:checked ~ .nav-toggle-label .nav-hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  /* Collapsed state: hide nav links */
+  .top-nav {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 0.5rem 1rem 0.5rem;
+    padding: 0.5rem;
+    background: var(--sl-color-gray-8);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  /* Expanded state: show nav links when checkbox is checked */
+  .nav-toggle:checked ~ .top-nav {
+    display: flex;
+  }
+
+  .top-nav a {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
 }
 
 /* Button/card accent backgrounds */
@@ -216,15 +320,15 @@ html:not([data-has-sidebar]) .content-panel + .content-panel {
   font-size: 1rem;
 }
 
-.hero-btn-primary {
+a.hero-btn-primary {
   background: var(--sl-color-accent);
-  color: var(--sl-color-white);
+  color: #ffffff !important;
   border: 1px solid var(--sl-color-accent);
 }
 
-.hero-btn-primary:hover {
+a.hero-btn-primary:hover {
   background: var(--sl-color-accent-high);
-  color: var(--sl-color-black);
+  color: var(--sl-color-black) !important;
   border-color: var(--sl-color-accent-high);
 }
 
