@@ -1,12 +1,13 @@
 # MSV Incognito Website
 
-The new website of MSV Incognito, built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
+The website of MSV Incognito, built with [Astro](https://astro.build) and MDX.
 
 ## Tech Stack
 
 - **Framework:** Astro 5.x
-- **Theme:** Starlight (documentation framework)
-- **Styling:** Custom CSS with dark theme (blue, white, black)
+- **Rendering:** Native Astro layouts and routes
+- **Styling:** Custom student-association editorial design system
+- **Motion:** GSAP with responsive and reduced-motion handling
 - **Content:** MDX
 
 ## Development
@@ -37,9 +38,12 @@ npm run preview
 │   └── favicon.ico
 ├── src/
 │   ├── assets/           # Logo and other Astro assets
+│   ├── components/       # Shared header and footer
+│   ├── layouts/          # Site-wide Astro layout
+│   ├── pages/            # Homepage and content routing
 │   ├── content/
 │   │   ├── config.ts     # Content collections config
-│   │   └── docs/         # All site pages (MDX)
+│   │   └── docs/         # Long-form site content (MDX)
 │   │       ├── index.mdx
 │   │       ├── about.mdx
 │   │       ├── contact.mdx
@@ -50,8 +54,8 @@ npm run preview
 │   │       ├── archive/  # P3-P5 placeholder pages
 │   │       └── ...
 │   └── styles/
-│       └── custom.css    # Dark theme overrides
-├── astro.config.mjs      # Astro & Starlight config
+│       └── global.css    # Site design system
+├── astro.config.mjs      # Astro config
 └── package.json
 ```
 
@@ -64,13 +68,14 @@ npm run preview
 | P2+ | Sponsor detail pages (ASML, Computd, Boels Rental, YER, ORTEC, ESAOTE, Medtronic, Startups) | Implemented |
 | P3-P5 | Events, History, Members, Posts, Yearbooks, Store | Archive placeholders |
 
-## Theme Colors
+## Design system
 
-- **Background:** `#000000` (black)
-- **Text:** `#f1f5f9` (off-white)
-- **Accent:** `#3b82f6` (blue)
-- **Accent High:** `#93c5fd` (light blue)
-- **Borders:** `#1e293b` (dark slate)
+- **Ink:** `#071526`
+- **Incognito blue:** `#155eef`
+- **Purple:** `#5746d8`
+- **Pink:** `#ef3b8f`
+- **Orange:** `#f57a32`
+- **Paper:** `#f5f6f2`
 
 ## License
 

@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('docs', ({ id }) => id !== 'index.mdx');
+  return pages.map((page) => ({
+    params: { slug: page.id.replace(/\.mdx$/, '') },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+const section = page.id.includes('/') ? page.id.split('/')[0] : 'Incognito';
+---
+
+<BaseLayout title={page.data.title} description={page.data.description} pageClass="content-page">
+  <section class="page-hero">
+    <div class="page-hero__grid" aria-hidden="true"></div>
+    <div class="shell page-hero__inner">
+      <p class="eyebrow">{section}</p>
+      <h1>{page.data.title}</h1>
+      {page.data.description && <p>{page.data.description}</p>}
+    </div>
+  </section>
+  <div class="shell content-shell">
+    <article class="prose">
+      <Content />
+    </article>
+    <aside class="page-aside">
+      <p class="eyebrow">MSV Incognito</p>
+      <p>Social, educational and professional opportunities for computing students in Maastricht.</p>
+      <a href="/contact">Get in touch <span aria-hidden="true">↗</span></a>
+    </aside>
+  </div>
+</BaseLayout>

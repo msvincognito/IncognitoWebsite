@@ -1,0 +1,72 @@
+---
+import terms from '../data/intro-camp-2026-terms.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type TextBlock = {
+  type: 'heading' | 'subheading' | 'paragraph';
+  text: string;
+};
+
+type ListBlock = {
+  type: 'ordered-list' | 'bullet-list';
+  items: string[];
+};
+
+type TermsBlock = TextBlock | ListBlock;
+
+const blocks = terms.blocks as TermsBlock[];
+const headingId = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+---
+
+<BaseLayout
+  title="Intro Camp 2026 Terms of Service"
+  description="Participant Agreement, Camp Rules, Payment and Refund Policy for DACS Intro Camp 2026."
+  pageClass="legal-page"
+>
+  <section class="page-hero legal-hero">
+    <div class="page-hero__grid" aria-hidden="true"></div>
+    <div class="shell page-hero__inner">
+      <p class="eyebrow">Terms of service</p>
+      <h1>{terms.title}</h1>
+      <p>{terms.subtitle}</p>
+    </div>
+  </section>
+
+  <div class="legal-shell">
+    <article class="prose legal-document" aria-label={terms.subtitle}>
+      {
+        blocks.map((block) => {
+          if (block.type === 'heading') {
+            return <h2 id={headingId(block.text)}>{block.text}</h2>;
+          }
+
+          if (block.type === 'subheading') {
+            return <h3 id={headingId(block.text)}>{block.text}</h3>;
+          }
+
+          if (block.type === 'ordered-list') {
+            return (
+              <ol>
+                {block.items.map((item) => <li>{item}</li>)}
+              </ol>
+            );
+          }
+
+          if (block.type === 'bullet-list') {
+            return (
+              <ul>
+                {block.items.map((item) => <li>{item}</li>)}
+              </ul>
+            );
+          }
+
+          return <p>{block.text}</p>;
+        })
+      }
+    </article>
+  </div>
+</BaseLayout>

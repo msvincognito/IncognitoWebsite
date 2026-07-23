@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sponsors = [
+  { name: 'ASML', logo: '/assets/sponsors/ASML_Holding_N.V._logo.svg', href: '/sponsors/asml' },
+  { name: 'Computd', logo: '/assets/sponsors/Computd-Logo-Dark.svg', href: '/sponsors/computd' },
+  { name: 'Boels Rental', logo: '/assets/sponsors/Logo_Boels_Rental.svg', href: '/sponsors/boels-rental' },
+  { name: 'Medtronic', logo: '/assets/sponsors/medtronic-logo.jpg', href: '/sponsors/medtronic' },
+  { name: 'YER', logo: '/assets/sponsors/yer-logo.svg', href: '/sponsors/yer' },
+  { name: 'ORTEC', logo: '/assets/sponsors/ortec.svg', href: '/sponsors/ortec' },
+];
+
+---
+
+<BaseLayout pageClass="home-page">
+  <section class="home-hero">
+    <div class="shell home-hero__inner">
+      <div class="home-hero__copy reveal">
+        <p class="eyebrow"><span></span> DACS · Maastricht University</p>
+        <h1>Welcome to<br /><em>Incognito.</em></h1>
+        <p class="hero-lead">We are the study association for the Department of Advanced Computing Sciences. This is where our students find events, academic support, committees, and the latest from the association.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="/archive/events">See our events <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="https://msvincognito.nl/wiki/">Open the wiki <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay">
+        <div class="activity-visual" aria-label="Incognito supports students through events, tutoring, education, careers and community">
+          <div class="activity-grid" aria-hidden="true"></div>
+          <div class="orbit-ring orbit-ring--outer" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="orbit-ring orbit-ring--inner" aria-hidden="true"><i></i><i></i></div>
+
+          <div class="activity-core">
+            <img class="activity-logo-light" src="/assets/logo-dark.png" alt="MSV Incognito" width="650" height="159" />
+            <img class="activity-logo-dark" src="/assets/logo.svg" alt="MSV Incognito" width="650" height="159" />
+            <p>Study association for DACS</p>
+          </div>
+
+          <span class="activity-chip activity-chip--social"><i></i> Social</span>
+          <span class="activity-chip activity-chip--education"><i></i> Education</span>
+          <span class="activity-chip activity-chip--events"><i></i> Events</span>
+          <span class="activity-chip activity-chip--careers"><i></i> Careers</span>
+          <span class="activity-chip activity-chip--tutoring"><i></i> Tutoring</span>
+          <span class="activity-chip activity-chip--community"><i></i> Community</span>
+          <span class="activity-year">Since 1994</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="student-links" aria-label="Student resources">
+    <div class="shell student-links__grid">
+      <p class="eyebrow">Useful links</p>
+      <a href="https://docs.google.com/spreadsheets/d/1NJM9jv8s1U3ky2MDAq0O8u-M-4mm6uuA/edit?usp=sharing&ouid=113568472572102595347&rtpof=true&sd=true"><span>01</span><strong>Find a tutor</strong><i>↗</i></a>
+      <a href="https://msvincognito.nl/wiki/"><span>02</span><strong>Student wiki</strong><i>↗</i></a>
+      <a href="https://store.msvincognito.nl"><span>03</span><strong>Incognito store</strong><i>↗</i></a>
+    </div>
+  </nav>
+
+  <section class="intro-section shell">
+    <div class="section-number">01</div>
+    <div class="intro-heading">
+      <p class="eyebrow">Who we are</p>
+      <h2>By students,<br />for students.</h2>
+    </div>
+    <div class="intro-copy">
+      <p>Incognito has represented computing students in Maastricht since 1994. We organize activities, support students throughout their studies, and connect our members with each other, the university, and relevant companies.</p>
+      <a class="text-link" href="/about">About the association <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="pillars-section">
+    <div class="shell">
+      <div class="section-heading">
+        <p class="eyebrow">What we do</p>
+        <h2>Social, educational,<br />and professional.</h2>
+      </div>
+      <div class="pillar-list">
+        <a class="pillar" href="/archive/events">
+          <span class="pillar-index">01</span>
+          <div><h3>Social</h3><p>Drinks, game nights, trips, and other activities throughout the academic year.</p></div>
+          <span class="pillar-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="pillar" href="/about">
+          <span class="pillar-index">02</span>
+          <div><h3>Educational</h3><p>Tutoring, study sessions, workshops, and shared resources for DACS students.</p></div>
+          <span class="pillar-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="pillar" href="/careers">
+          <span class="pillar-index">03</span>
+          <div><h3>Professional</h3><p>Career days, company visits, job opportunities, and talks from people working in the field.</p></div>
+          <span class="pillar-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsors-section">
+    <div class="shell">
+      <div class="sponsors-heading">
+        <div><p class="eyebrow">Our sponsors</p><h2>Organizations that support our association.</h2></div>
+        <a class="text-link" href="/sponsors">All partners <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="logo-wall">
+        {sponsors.map((sponsor) => (
+          <a href={sponsor.href} aria-label={`Learn more about ${sponsor.name}`}>
+            <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const initializeActivityMotion = () => {
+    const activityVisual = document.querySelector('.activity-visual');
+    if (!activityVisual || activityVisual.hasAttribute('data-motion-ready')) return;
+
+    activityVisual.setAttribute('data-motion-ready', '');
+    const motion = gsap.matchMedia();
+
+    motion.add(
+      {
+        reduceMotion: '(prefers-reduced-motion: reduce)',
+        mobile: '(max-width: 700px)',
+        desktop: '(min-width: 701px)',
+      },
+      (context) => {
+        const { reduceMotion, mobile } = context.conditions;
+        const chips = activityVisual.querySelectorAll('.activity-chip');
+        const rings = activityVisual.querySelectorAll('.orbit-ring');
+        const core = activityVisual.querySelector('.activity-core');
+
+        if (reduceMotion) return;
+
+        gsap.from(chips, {
+          autoAlpha: 0,
+          scale: 0.86,
+          duration: 0.65,
+          stagger: 0.08,
+          ease: 'power2.out',
+        });
+
+        gsap.from(core, {
+          autoAlpha: 0,
+          scale: 0.94,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
+
+        const chipDrift = gsap.to(chips, {
+          x: (index) => (index % 3 === 0 ? 5 : -4),
+          y: (index) => (index % 2 === 0 ? -7 : 7),
+          duration: (index) => 2.5 + (index % 3) * 0.35,
+          stagger: 0.11,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+
+        const ringRotation = gsap.to(rings, {
+          rotation: (index) => (index === 0 ? 360 : -360),
+          duration: (index) => (mobile ? 34 : 28) + index * 9,
+          repeat: -1,
+          ease: 'none',
+          transformOrigin: '50% 50%',
+        });
+
+        const corePulse = gsap.to(core, {
+          scale: 1.018,
+          duration: 2.8,
+          delay: 1,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        });
+
+        return () => {
+          chipDrift.kill();
+          ringRotation.kill();
+          corePulse.kill();
+        };
+      },
+      activityVisual,
+    );
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeActivityMotion, { once: true });
+  } else {
+    initializeActivityMotion();
+  }
+</script>
