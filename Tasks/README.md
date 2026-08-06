@@ -4,7 +4,7 @@
 
 **Generated:** July 22, 2026
 **Website:** https://msvincognito.nl
-**Wiki:** https://msvincognito.nl/wiki
+**Wiki:** https://wiki.msvincognito.nl
 
 ---
 
@@ -97,7 +97,7 @@ The Knowledge Base (powered by DokuWiki) contains:
 - ✅ Useful information for students
 - ✅ Minutes and Event Manuals (member-restricted)
 
-**Access:** https://msvincognito.nl/wiki
+**Access:** https://wiki.msvincognito.nl
 
 ---
 
@@ -191,7 +191,7 @@ The following sections require authentication:
 | **Email** | incognito@maastrichtuniversity.nl |
 | **Address** | Paul-Henri Spaaklaan 1, 6229 EN Maastricht |
 | **Website** | https://msvincognito.nl |
-| **Wiki** | https://msvincognito.nl/wiki |
+| **Wiki** | https://wiki.msvincognito.nl |
 
 ### Social Media
 
