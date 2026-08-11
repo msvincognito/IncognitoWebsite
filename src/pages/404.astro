@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page could not be found."
+  pageClass="content-page"
+>
+  <section class="page-hero">
+    <div class="page-hero__grid" aria-hidden="true"></div>
+    <div class="shell page-hero__inner">
+      <p class="eyebrow">404</p>
+      <h1>Page not found</h1>
+      <p>The page you requested does not exist or may have moved.</p>
+    </div>
+  </section>
+  <div class="shell content-shell">
+    <article class="prose">
+      <h2>Where to next?</h2>
+      <p>You can return to the homepage or use the navigation above to find what you need.</p>
+      <p><a href="/">Return to the homepage</a></p>
+    </article>
+  </div>
+</BaseLayout>
