@@ -115,3 +115,8 @@ $RECYCLE.BIN/
 
 # Backup files
 *.backup
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
