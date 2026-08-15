@@ -112,6 +112,7 @@ $RECYCLE.BIN/
 *.key
 *.cert
 .turbo
+.worktrees/
 
 # Backup files
 *.backup
