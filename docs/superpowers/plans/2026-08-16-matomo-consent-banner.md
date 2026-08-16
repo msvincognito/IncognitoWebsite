@@ -33,7 +33,7 @@
 - Consumes: `window.localStorage`, `window._paq`, and the browser `document` DOM API.
 - Produces: `window.__incognitoMatomoConsentController`, `window.__incognitoMatomoInitialized`, `#incognito-analytics-consent`, `#incognito-privacy-settings`, and the Matomo `_paq` command queue.
 
-- [ ] **Step 1: Write the minimal browser harness and first-visit failing test**
+- [x] **Step 1: Write the minimal browser harness and first-visit failing test**
 
 Create a dependency-free test harness that evaluates `public/matomo-consent.js` with `vm.runInNewContext`. The harness must provide real stateful fakes for elements, event listeners, focus, `document.head`, `document.body`, `createElement`, `getElementById`, and local storage. Start with this observable behavior:
 
@@ -50,7 +50,7 @@ test('first visit asks for consent without loading Matomo', async () => {
 
 The change that makes this test pass is the controller creating the UI while leaving analytics uninitialized.
 
-- [ ] **Step 2: Run the focused test and verify RED**
+- [x] **Step 2: Run the focused test and verify RED**
 
 Run:
 
@@ -60,7 +60,7 @@ node --test tests/matomo-consent.test.mjs
 
 Expected: FAIL because `public/matomo-consent.js` does not exist.
 
-- [ ] **Step 3: Implement the minimal first-visit controller**
+- [x] **Step 3: Implement the minimal first-visit controller**
 
 Use a guarded IIFE:
 
@@ -86,13 +86,13 @@ The banner copy is exactly:
 <a href="/privacy-policy">Read our privacy policy</a>
 ```
 
-- [ ] **Step 4: Verify the first-visit test passes**
+- [x] **Step 4: Verify the first-visit test passes**
 
 Run `node --test tests/matomo-consent.test.mjs`.
 
 Expected: PASS.
 
-- [ ] **Step 5: Add failing decision and tracking tests**
+- [x] **Step 5: Add failing decision and tracking tests**
 
 Add separate tests asserting:
 
@@ -129,13 +129,13 @@ Add cases for stored acceptance, stored refusal, invalid stored values, unavaila
 
 The change that makes these tests pass is valid decision persistence plus idempotent Matomo and UI state transitions.
 
-- [ ] **Step 6: Run decision tests and verify RED**
+- [x] **Step 6: Run decision tests and verify RED**
 
 Run `node --test tests/matomo-consent.test.mjs`.
 
 Expected: the first-visit test passes; the new decision tests FAIL because their event behavior is not implemented.
 
-- [ ] **Step 7: Implement persistence, state transitions, and Matomo initialization**
+- [x] **Step 7: Implement persistence, state transitions, and Matomo initialization**
 
 Implement these exact internal functions in the controller:
 
@@ -149,13 +149,13 @@ function hideBanner(restoreFocus) { /* hide banner, show settings, optionally fo
 
 Acceptance writes `accepted`, initializes Matomo only if needed, and hides the banner. Refusal writes `declined`, queues `forgetConsentGiven` and `deleteCookies` only when `_paq` exists, and hides the banner. Stored acceptance initializes on load; stored refusal does not. A settings click reopens the banner. Event handlers ignore clicks while their control is hidden.
 
-- [ ] **Step 8: Run focused tests and verify GREEN**
+- [x] **Step 8: Run focused tests and verify GREEN**
 
 Run `node --test tests/matomo-consent.test.mjs`.
 
 Expected: all consent-controller tests PASS with no warnings.
 
-- [ ] **Step 9: Commit the behavior**
+- [x] **Step 9: Commit the behavior**
 
 ```bash
 git add public/matomo-consent.js tests/matomo-consent.test.mjs
@@ -175,7 +175,7 @@ git commit -m "Add privacy-first Matomo consent controller"
 - Consumes: `/matomo-consent.js` and the IDs/classes rendered by Task 1.
 - Produces: one deferred consent controller on every generated page and a responsive banner using existing CSS custom properties.
 
-- [ ] **Step 1: Add a failing generated-output integration test**
+- [x] **Step 1: Add a failing generated-output integration test**
 
 Build the site from the test with `execFileSync('npm', ['run', 'build'])`, then inspect these representative pages:
 
@@ -198,13 +198,13 @@ test('every generated route loads one deferred consent controller', async () => 
 
 The change that makes this test pass is the shared layout loading the controller once without embedding Matomo directly.
 
-- [ ] **Step 2: Run the integration test and verify RED**
+- [x] **Step 2: Run the integration test and verify RED**
 
 Run `node --test tests/matomo-consent.test.mjs`.
 
 Expected: FAIL because generated pages do not load `/matomo-consent.js`.
 
-- [ ] **Step 3: Load the controller from the shared layout**
+- [x] **Step 3: Load the controller from the shared layout**
 
 Add this before `</head>` in `src/layouts/BaseLayout.astro`:
 
@@ -214,7 +214,7 @@ Add this before `</head>` in `src/layouts/BaseLayout.astro`:
 
 Do not add an inline Matomo bootstrap.
 
-- [ ] **Step 4: Add the adapted component styles**
+- [x] **Step 4: Add the adapted component styles**
 
 In the components layer, style the banner with:
 
@@ -228,7 +228,7 @@ In the components layer, style the banner with:
 
 All repeated colors, fonts, and focus styles must use existing website variables where contrast permits. Do not add rounded corners, backdrop blur, or glass effects.
 
-- [ ] **Step 5: Rebuild and verify integration GREEN**
+- [x] **Step 5: Rebuild and verify integration GREEN**
 
 Run:
 
@@ -239,7 +239,7 @@ node --test tests/matomo-consent.test.mjs
 
 Expected: the build and all focused tests PASS without warnings.
 
-- [ ] **Step 6: Inspect representative output and responsive CSS**
+- [x] **Step 6: Inspect representative output and responsive CSS**
 
 Verify the generated homepage contains exactly one controller reference and no direct Matomo reference:
 
@@ -250,7 +250,7 @@ rg -n 'analytics\.msvincognito\.nl/matomo\.js' dist/index.html
 
 Expected: the first command prints one match; the second prints none. Inspect desktop and mobile renderings in light and dark themes, including focus visibility and overflow.
 
-- [ ] **Step 7: Commit the integration and styling**
+- [x] **Step 7: Commit the integration and styling**
 
 ```bash
 git add src/layouts/BaseLayout.astro src/styles/global.css tests/matomo-consent.test.mjs
@@ -268,7 +268,7 @@ git commit -m "Integrate branded analytics consent banner"
 - Consumes: the completed controller, layout integration, styles, and test suite.
 - Produces: checked plan state and a verified, push-ready branch.
 
-- [ ] **Step 1: Run the complete verification suite**
+- [x] **Step 1: Run the complete verification suite**
 
 Run:
 
@@ -280,7 +280,7 @@ git diff --check
 
 Expected: build succeeds, every test passes, and `git diff --check` reports no errors.
 
-- [ ] **Step 2: Mark completed plan checkboxes and commit**
+- [x] **Step 2: Mark completed plan checkboxes and commit**
 
 Update every completed checkbox in this plan from `[ ]` to `[x]`, then run:
 
@@ -289,6 +289,6 @@ git add docs/superpowers/plans/2026-08-16-matomo-consent-banner.md
 git commit -m "Complete Matomo consent banner plan"
 ```
 
-- [ ] **Step 3: Push the current branch**
+- [x] **Step 3: Push the current branch**
 
 Run `git push` and report the pushed branch and final verification results.
