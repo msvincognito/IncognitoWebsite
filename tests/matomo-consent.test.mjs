@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import vm from 'node:vm';
@@ -225,4 +226,25 @@ test('evaluating the controller twice does not duplicate UI or tracking', async 
   assert.equal(browser.document.body.children.filter((element) => element.id === 'incognito-privacy-settings').length, 1);
   assert.equal(browser.scripts('incognito-matomo-script').length, 1);
   assert.equal(normalizeQueue(browser.window._paq).filter(([command]) => command === 'trackPageView').length, 1);
+});
+
+test('every generated route loads one deferred consent controller', async () => {
+  execFileSync('npm', ['run', 'build'], {
+    cwd: new URL('..', import.meta.url),
+    stdio: 'pipe',
+  });
+
+  const generatedPages = [
+    'dist/index.html',
+    'dist/about/index.html',
+    'dist/intro-camp-2026-terms-of-service/index.html',
+    'dist/404.html',
+  ];
+
+  for (const pagePath of generatedPages) {
+    const html = await readFile(new URL(`../${pagePath}`, import.meta.url), 'utf8');
+    const controllerScripts = html.match(/<script src="\/matomo-consent\.js" defer><\/script>/g) || [];
+    assert.equal(controllerScripts.length, 1, `${pagePath} should load one consent controller`);
+    assert.doesNotMatch(html, /analytics\.msvincognito\.nl\/matomo\.js/);
+  }
 });
