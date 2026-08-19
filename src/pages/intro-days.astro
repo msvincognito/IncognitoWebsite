@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const resourceGroups = [
+  {
+    eyebrow: 'Start here',
+    title: 'Settling into Maastricht',
+    description: 'The practical essentials for getting established in the city.',
+    links: [
+      {
+        label: 'Register with a GP',
+        detail: 'Find a general practitioner through Huisartsenpraktijk Maastricht',
+        href: 'https://hapmaastricht.nl/en/students-and-expats/',
+      },
+      {
+        label: 'mymaastricht',
+        detail: 'Local information for students, from housing to health and transport',
+        href: 'https://mymaastricht.nl',
+      },
+    ],
+  },
+  {
+    eyebrow: 'Incognito',
+    title: 'Stay in the loop',
+    description: 'Keep up with the association throughout your first year.',
+    links: [
+      {
+        label: 'Add our events to your calendar',
+        detail: 'Subscribe once and receive new Incognito events automatically',
+        href: 'https://calendar.google.com/calendar/u/0/r?cid=bf8cf7de3b1ca9fed3c63616cca34be0f6c33ff443c7ce846b2d875eb080b00a@group.calendar.google.com',
+      },
+      {
+        label: 'Follow us on Instagram',
+        detail: 'Updates, announcements, and a look back at our activities',
+        href: 'https://instagram.com/msvincognito/',
+      },
+    ],
+  },
+  {
+    eyebrow: 'University',
+    title: 'Your study toolkit',
+    description: 'The systems you will use for courses, schedules, and administration.',
+    links: [
+      {
+        label: 'Student Portal',
+        detail: 'Your central starting point for Maastricht University services',
+        href: 'https://studentportal.maastrichtuniversity.nl',
+      },
+      {
+        label: 'Your timetable',
+        detail: 'Check class times, rooms, and changes to your schedule',
+        href: 'https://timetable.maastrichtuniversity.nl/',
+      },
+      {
+        label: 'Canvas',
+        detail: 'Course materials, announcements, and assignments',
+        href: 'https://canvas.maastrichtuniversity.nl',
+      },
+    ],
+  },
+  {
+    eyebrow: 'Slides',
+    title: 'What we shared',
+    description: 'Revisit the presentation from the Incognito introduction.',
+    links: [
+      {
+        label: 'Incognito Presentation',
+        detail: 'The association, our committees, and how to get involved',
+        href: 'https://www.canva.com/design/DAG-ZFhN4Ms/UePGQ3680J3B4t9VglNR-w/view?utm_content=DAG-ZFhN4Ms&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h1cd65bab41',
+      },
+    ],
+  },
+];
+
+const fallbackYear = new Date().getFullYear() + 1;
+---
+
+<BaseLayout
+  title="DACS Intro Days"
+  description="Useful links for new Department of Advanced Computing Sciences students in Maastricht."
+  pageClass="intro-days-page"
+>
+  <section class="intro-days-hero">
+    <div class="intro-days-hero__grid" aria-hidden="true"></div>
+    <div class="shell intro-days-hero__inner">
+      <div class="intro-days-hero__copy">
+        <p class="eyebrow"><span></span> Your DACS field guide</p>
+        <h1>DACS Intro<br />Days <em id="intro-days-year" aria-live="polite">{fallbackYear}</em></h1>
+        <p>All the useful links in one place. Keep this page close while you find your feet at DACS and in Maastricht.</p>
+      </div>
+      <div class="intro-days-hero__marker" aria-hidden="true">
+        <span>01</span>
+        <strong>Start<br />here</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="intro-days-shell shell">
+    <aside class="intro-days-note" aria-label="About this guide">
+      <span class="intro-days-note__line" aria-hidden="true"></span>
+      <p><strong>New to Maastricht?</strong> Work through the links from top to bottom, or jump straight to the resource you need.</p>
+    </aside>
+
+    <section id="intro-days-programme" class="programme-panel" hidden>
+      <div>
+        <p class="eyebrow">Your programme</p>
+        <h2 id="intro-days-programme-name"></h2>
+        <p>Meet the students starting alongside you and keep up with programme-specific updates.</p>
+      </div>
+      <a id="intro-days-programme-link" class="programme-panel__link" href="" target="_blank" rel="noopener noreferrer">
+        Join the WhatsApp group <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <div class="resource-groups">
+      {
+        resourceGroups.map((group, groupIndex) => (
+          <section class="resource-group" aria-labelledby={`resource-group-${groupIndex}`}>
+            <header class="resource-group__heading">
+              <div class="resource-group__number" aria-hidden="true">{String(groupIndex + 1).padStart(2, '0')}</div>
+              <div>
+                <p class="eyebrow">{group.eyebrow}</p>
+                <h2 id={`resource-group-${groupIndex}`}>{group.title}</h2>
+                <p>{group.description}</p>
+              </div>
+            </header>
+
+            <div class="resource-list">
+              {group.links.map((link, linkIndex) => (
+                <a class="resource-link" href={link.href} target="_blank" rel="noopener noreferrer">
+                  <span class="resource-link__index" aria-hidden="true">{String(linkIndex + 1).padStart(2, '0')}</span>
+                  <span class="resource-link__copy">
+                    <strong>{link.label}</strong>
+                    <small>{link.detail}</small>
+                  </span>
+                  <span class="resource-link__arrow" aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline type="module" src="/intro-days.js"></script>
+
+<style>
+  .intro-days-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 560px;
+    border-bottom: 1px solid var(--line);
+    background: var(--footer);
+    color: var(--on-dark);
+  }
+
+  .intro-days-hero::after {
+    position: absolute;
+    right: -8rem;
+    bottom: -10rem;
+    width: 31rem;
+    height: 31rem;
+    border: 7rem solid var(--blue);
+    border-radius: 50%;
+    content: '';
+    opacity: .82;
+  }
+
+  .intro-days-hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .055) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(90deg, #000 0%, transparent 78%);
+  }
+
+  .intro-days-hero__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-height: 560px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 4rem;
+    padding-block: clamp(5rem, 9vw, 8rem);
+  }
+
+  .intro-days-hero__copy { max-width: 820px; }
+  .intro-days-hero .eyebrow { margin-bottom: 1.5rem; color: #9ec4ff; }
+  .intro-days-hero h1 { max-width: 760px; font-size: clamp(4rem, 9vw, 8.5rem); }
+  .intro-days-hero h1 em { color: var(--pink); font-style: normal; }
+  .intro-days-hero__copy > p:last-child { max-width: 610px; margin-top: 2rem; color: #cbd8e8; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+
+  .intro-days-hero__marker {
+    display: grid;
+    width: 190px;
+    aspect-ratio: 1;
+    align-content: space-between;
+    padding: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, .38);
+    background: rgba(7, 21, 38, .72);
+  }
+
+  .intro-days-hero__marker span { color: var(--pink); font-size: .75rem; font-weight: 900; letter-spacing: .16em; }
+  .intro-days-hero__marker strong { font-family: var(--display); font-size: 2.75rem; letter-spacing: -.04em; line-height: .84; text-transform: uppercase; }
+
+  .intro-days-shell { padding-block: clamp(3rem, 6vw, 6rem) clamp(5rem, 9vw, 9rem); }
+
+  .intro-days-note {
+    display: grid;
+    max-width: 780px;
+    grid-template-columns: 72px 1fr;
+    align-items: start;
+    gap: 1.5rem;
+    margin-bottom: clamp(3rem, 6vw, 6rem);
+    color: var(--muted);
+  }
+
+  .intro-days-note__line { height: 3px; margin-top: .75rem; background: var(--pink); }
+  .intro-days-note strong { color: var(--ink); }
+
+  .programme-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 3rem;
+    margin-bottom: clamp(4rem, 8vw, 8rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .programme-panel[hidden] { display: none; }
+  .programme-panel::before { position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--pink); content: ''; }
+  .programme-panel .eyebrow { margin-bottom: 1.2rem; color: #d9e8ff; }
+  .programme-panel h2 { max-width: 720px; font-size: clamp(2.7rem, 6vw, 5.2rem); }
+  .programme-panel p:last-child { max-width: 630px; margin-top: 1.25rem; color: #e6efff; }
+  .programme-panel__link {
+    display: inline-flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0 1.25rem;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: .76rem;
+    font-weight: 850;
+    letter-spacing: .08em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+
+  .programme-panel__link:hover { background: #fff; color: var(--blue); transform: translateY(-3px); }
+
+  .resource-groups { display: grid; gap: clamp(5rem, 10vw, 10rem); }
+  .resource-group { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: clamp(2.5rem, 6vw, 7rem); }
+  .resource-group__heading { display: grid; grid-template-columns: 42px 1fr; align-content: start; gap: 1.25rem; }
+  .resource-group__number { padding-top: .15rem; color: var(--pink); font-family: var(--display); font-size: .8rem; font-weight: 900; letter-spacing: .14em; }
+  .resource-group__heading .eyebrow { margin-bottom: 1rem; color: var(--blue); }
+  .resource-group__heading h2 { max-width: 420px; font-size: clamp(2.5rem, 4.5vw, 4.4rem); }
+  .resource-group__heading > div:last-child > p:last-child { max-width: 390px; margin-top: 1.3rem; color: var(--muted); font-size: .96rem; }
+
+  .resource-list { border-top: 1px solid var(--ink); }
+  .resource-link {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.25rem;
+    min-height: 128px;
+    padding: 1.4rem 1.1rem 1.4rem 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background .2s ease, padding .2s ease;
+  }
+
+  .resource-link:hover { padding-left: 1rem; background: var(--surface-hover); }
+  .resource-link__index { color: var(--muted); font-size: .68rem; font-weight: 900; letter-spacing: .12em; }
+  .resource-link__copy { display: grid; gap: .4rem; }
+  .resource-link__copy strong { color: var(--ink); font-family: var(--display); font-size: clamp(1.45rem, 2.5vw, 2.15rem); letter-spacing: -.025em; line-height: 1; }
+  .resource-link__copy small { max-width: 570px; color: var(--muted); font-size: .88rem; line-height: 1.45; }
+  .resource-link__arrow { display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid var(--line); color: var(--blue); font-size: 1.2rem; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+  .resource-link:hover .resource-link__arrow { border-color: var(--blue); background: var(--blue); color: #fff; }
+
+  @media (max-width: 850px) {
+    .intro-days-hero__inner { grid-template-columns: 1fr; }
+    .intro-days-hero__marker { display: none; }
+    .programme-panel, .resource-group { grid-template-columns: 1fr; }
+    .programme-panel { align-items: start; gap: 2rem; }
+    .programme-panel__link { width: fit-content; }
+  }
+
+  @media (max-width: 600px) {
+    .intro-days-hero { min-height: 470px; }
+    .intro-days-hero__inner { min-height: 470px; padding-block: 4rem; }
+    .intro-days-hero::after { right: -15rem; bottom: -12rem; }
+    .intro-days-note { grid-template-columns: 42px 1fr; }
+    .resource-group__heading { grid-template-columns: 1fr; }
+    .resource-group__number { display: none; }
+    .resource-link { min-height: 112px; grid-template-columns: minmax(0, 1fr) 42px; }
+    .resource-link__index { display: none; }
+    .resource-link__arrow { width: 42px; height: 42px; }
+    .resource-link__copy small { font-size: .82rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .programme-panel__link, .resource-link, .resource-link__arrow { transition: none; }
+  }
+</style>
