@@ -38,13 +38,13 @@ function createPageElements() {
   };
 }
 
-test('header displays the year after the supplied current year', async () => {
+test('header displays the current and next year as an academic year range', async () => {
   const { initializeIntroDays } = await loadIntroDaysModule();
   const page = createPageElements();
 
   initializeIntroDays({ document: page.document, search: '', currentYear: 2026 });
 
-  assert.equal(page.element('intro-days-year').textContent, '2027');
+  assert.equal(page.element('intro-days-year').textContent, '2026-2027');
 });
 
 test('valid programme queries reveal the matching named WhatsApp group', async () => {

@@ -19,7 +19,7 @@ export function initializeIntroDays({ document, search, currentYear }) {
   const programmeName = document.getElementById('intro-days-programme-name');
   const programmeLink = document.getElementById('intro-days-programme-link');
 
-  if (year) year.textContent = String(currentYear + 1);
+  if (year) year.textContent = `${currentYear}-${currentYear + 1}`;
   if (!programmeSection || !programmeName || !programmeLink) return;
 
   programmeSection.hidden = true;

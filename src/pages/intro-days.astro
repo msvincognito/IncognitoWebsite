@@ -72,7 +72,8 @@ const resourceGroups = [
   },
 ];
 
-const fallbackYear = new Date().getFullYear() + 1;
+const currentYear = new Date().getFullYear();
+const fallbackYear = `${currentYear}-${currentYear + 1}`;
 ---
 
 <BaseLayout
