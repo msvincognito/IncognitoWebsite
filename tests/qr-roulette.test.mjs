@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
@@ -65,4 +66,24 @@ test('random helpers select boundary values and avoid an immediate prompt repeat
   const prompts = ['First', 'Second', 'Third'];
   assert.equal(choosePrompt(prompts, 'First', () => 0), 'Second');
   assert.equal(choosePrompt(['Only'], 'Only', () => 0.8), 'Only');
+});
+
+test('production build emits an unlisted QR roulette with generated SVG segments', async () => {
+  execFileSync('npm', ['run', 'build'], {
+    cwd: new URL('..', import.meta.url),
+    stdio: 'pipe',
+  });
+
+  const html = await readFile(new URL('../dist/qr/index.html', import.meta.url), 'utf8');
+  const segmentCount = html.match(/<g data-wheel-segment/g)?.length ?? 0;
+
+  assert.equal(segmentCount, data.categories.length);
+  assert.match(html, /data-qr-roulette/);
+  assert.match(html, /data-spin/);
+  assert.match(html, /data-another/);
+  assert.match(html, /data-reset/);
+  assert.match(html, /aria-live="polite"/);
+  assert.doesNotMatch(html, /class="site-header"/);
+  assert.doesNotMatch(html, /class="site-footer"/);
+  assert.match(html, /<script src="\/matomo-consent\.js" defer><\/script>/);
 });

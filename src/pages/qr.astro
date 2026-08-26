@@ -1,0 +1,30 @@
+---
+import QrWheel from '../components/QrWheel.astro';
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, viewport-fit=cover" />
+    <meta name="description" content="Spin the Incognito conversation roulette and discover a question to ask." />
+    <meta name="theme-color" content="#071526" />
+    <meta name="robots" content="noindex, nofollow" />
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem('incognito-theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme || systemTheme;
+      })();
+    </script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="canonical" href={Astro.url} />
+    <title>Conversation Roulette — MSV Incognito</title>
+    <script src="/matomo-consent.js" defer></script>
+  </head>
+  <body class="qr-page">
+    <a class="skip-link" href="#qr-main">Skip to roulette</a>
+    <main id="qr-main"><QrWheel /></main>
+  </body>
+</html>

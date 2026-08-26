@@ -1,0 +1,104 @@
+---
+import promptData from '../data/qr-prompts.json';
+import { createWheelSegments, validatePromptData } from '../lib/qr-roulette.mjs';
+
+const categories = validatePromptData(promptData);
+const segments = createWheelSegments(categories);
+const serializedCategories = JSON.stringify(categories);
+---
+
+<section class="qr-roulette" data-qr-roulette data-state="ready" data-categories={serializedCategories}>
+  <div class="qr-roulette__intro">
+    <img src="/assets/logo-dark.png" alt="MSV Incognito" width="650" height="159" />
+    <p class="qr-roulette__eyebrow">Scan. Spin. Start talking.</p>
+    <h1>Conversation<br /><em>roulette</em></h1>
+    <p>Give the wheel a spin and see where the conversation takes you.</p>
+  </div>
+
+  <div class="qr-roulette__stage">
+    <div class="qr-wheel-wrap">
+      <div class="qr-pointer" aria-hidden="true"></div>
+      <svg class="qr-wheel" data-wheel viewBox="0 0 320 320" role="img" aria-label="Conversation categories">
+        {segments.map((segment) => (
+          <g data-wheel-segment data-index={segment.index}>
+            <path d={segment.path} fill={segment.color} />
+            <text
+              x={segment.labelX}
+              y={segment.labelY}
+              transform={`rotate(${segment.labelRotation} ${segment.labelX} ${segment.labelY})`}
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              {segment.category}
+            </text>
+          </g>
+        ))}
+      </svg>
+      <button class="qr-spin" type="button" data-spin>Spin</button>
+    </div>
+
+    <div class="qr-result" data-result hidden>
+      <p class="qr-result__category" data-result-category></p>
+      <p class="qr-result__prompt" data-result-prompt></p>
+      <p class="sr-only" data-announcement aria-live="polite"></p>
+      <div class="qr-result__actions">
+        <button type="button" data-another>Another prompt</button>
+        <button type="button" data-reset>Spin again</button>
+      </div>
+      <p class="qr-result__error" data-error hidden>Something interrupted the spin. Please try again.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qr-roulette {
+    display: grid;
+    gap: 2rem;
+    margin-inline: auto;
+    max-width: 68rem;
+    padding: 2rem 1rem;
+  }
+
+  .qr-wheel-wrap {
+    position: relative;
+    margin-inline: auto;
+    max-width: 32rem;
+  }
+
+  .qr-wheel {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .qr-wheel text {
+    fill: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .qr-pointer {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-right: 0.75rem solid transparent;
+    border-left: 0.75rem solid transparent;
+    border-top: 1.5rem solid #071526;
+    transform: translateX(-50%);
+  }
+
+  .qr-spin {
+    display: block;
+    margin: 1rem auto 0;
+  }
+
+  @media (min-width: 48rem) {
+    .qr-roulette {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+  }
+</style>
