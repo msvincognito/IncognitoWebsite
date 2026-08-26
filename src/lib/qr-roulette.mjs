@@ -85,3 +85,104 @@ export function choosePrompt(prompts, previousPrompt = '', random = Math.random)
     : prompts;
   return candidates[chooseIndex(candidates.length, random)];
 }
+
+export function initializeQrRoulette(options = {}) {
+  const root = options.root ?? document.querySelector('[data-qr-roulette]');
+  if (!root) return null;
+
+  const random = options.random ?? Math.random;
+  const browserWindow = options.window ?? globalThis.window;
+  const reducedMotion = options.reducedMotion
+    ?? browserWindow?.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ?? false;
+  const schedule = options.schedule ?? browserWindow.setTimeout.bind(browserWindow);
+  const categories = validatePromptData({
+    contentStatus: 'final',
+    categories: JSON.parse(root.dataset.categories),
+  });
+  const elements = {
+    wheel: root.querySelector('[data-wheel]'),
+    spin: root.querySelector('[data-spin]'),
+    result: root.querySelector('[data-result]'),
+    category: root.querySelector('[data-result-category]'),
+    prompt: root.querySelector('[data-result-prompt]'),
+    announcement: root.querySelector('[data-announcement]'),
+    another: root.querySelector('[data-another]'),
+    reset: root.querySelector('[data-reset]'),
+    error: root.querySelector('[data-error]'),
+    segments: Array.from(root.querySelectorAll('[data-wheel-segment]')),
+  };
+  let state = 'ready';
+  let selectedIndex = -1;
+  let previousPrompt = '';
+  let completedTurns = 0;
+
+  function setState(nextState) {
+    state = nextState;
+    root.dataset.state = nextState;
+  }
+
+  function showResult() {
+    const selected = categories[selectedIndex];
+    previousPrompt = choosePrompt(selected.prompts, previousPrompt, random);
+    elements.category.textContent = selected.category;
+    elements.prompt.textContent = previousPrompt;
+    elements.announcement.textContent = `${selected.category}. ${previousPrompt}`;
+    elements.result.hidden = false;
+    elements.spin.disabled = false;
+    elements.segments.forEach((segment, index) => {
+      segment.setAttribute('data-selected', String(index === selectedIndex));
+    });
+    setState('result');
+  }
+
+  function recover() {
+    elements.error.hidden = false;
+    elements.spin.disabled = false;
+    setState('ready');
+  }
+
+  function spin() {
+    if (state === 'spinning') return;
+    try {
+      elements.error.hidden = true;
+      elements.result.hidden = true;
+      elements.spin.disabled = true;
+      selectedIndex = chooseIndex(categories.length, random);
+      previousPrompt = '';
+      completedTurns += 4;
+      const sliceAngle = 360 / categories.length;
+      const rotation = completedTurns * 360 - (selectedIndex + 0.5) * sliceAngle;
+      elements.wheel.style.setProperty('--wheel-rotation', `${rotation}deg`);
+      setState('spinning');
+      schedule(() => {
+        try {
+          showResult();
+        } catch {
+          recover();
+        }
+      }, reducedMotion ? 80 : 2600);
+    } catch {
+      recover();
+    }
+  }
+
+  function anotherPrompt() {
+    if (selectedIndex < 0 || state !== 'result') return;
+    showResult();
+  }
+
+  function reset() {
+    elements.result.hidden = true;
+    elements.spin.disabled = false;
+    elements.announcement.textContent = '';
+    elements.segments.forEach((segment) => segment.setAttribute('data-selected', 'false'));
+    setState('ready');
+  }
+
+  elements.spin.addEventListener('click', spin);
+  elements.another.addEventListener('click', anotherPrompt);
+  elements.reset.addEventListener('click', reset);
+
+  return { spin, anotherPrompt, reset, getState: () => state };
+}

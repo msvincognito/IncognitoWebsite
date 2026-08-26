@@ -50,6 +50,14 @@ const serializedCategories = JSON.stringify(categories);
   </div>
 </section>
 
+<script>
+  import { initializeQrRoulette } from '../lib/qr-roulette.mjs';
+
+  document.querySelectorAll('[data-qr-roulette]').forEach((root) => {
+    initializeQrRoulette({ root });
+  });
+</script>
+
 <style>
   .qr-roulette {
     display: grid;
