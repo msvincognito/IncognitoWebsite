@@ -224,3 +224,39 @@ test('an unexpected result-rendering error restores the spin control and shows r
   assert.equal(page.elements.get('[data-error]').hidden, false);
   assert.equal(page.elements.get('[data-result]').hidden, false);
 });
+
+test('built QR page contains the phone-first transition and accessibility safeguards', async () => {
+  execFileSync('npm', ['run', 'build'], {
+    cwd: new URL('..', import.meta.url),
+    stdio: 'pipe',
+  });
+
+  const html = await readFile(new URL('../dist/qr/index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /viewport-fit=cover/);
+  assert.match(html, /prefers-reduced-motion:\s*reduce/);
+  assert.match(html, /env\(safe-area-inset-bottom\)/);
+  assert.match(html, /body\.qr-page #incognito-privacy-settings/);
+  assert.match(html, /min-width:\s*760px\) and \(max-height:\s*950px/);
+  assert.match(html, /data-state="ready"/);
+  assert.match(html, /data-result[^>]*hidden/);
+  assert.match(html, /class="qr-pointer"/);
+  assert.match(html, /class="qr-result/);
+  assert.match(html, /noindex, nofollow/);
+});
+
+test('existing source navigation and content do not advertise the QR route', async () => {
+  const { readdir } = await import('node:fs/promises');
+  const sourceRoot = new URL('../src/', import.meta.url);
+  const entries = await readdir(sourceRoot, { recursive: true, withFileTypes: true });
+  const publicContentFiles = entries.filter((entry) => (
+    entry.isFile()
+    && /\.(astro|mdx)$/.test(entry.name)
+    && entry.name !== 'qr.astro'
+  ));
+
+  for (const entry of publicContentFiles) {
+    const source = await readFile(new URL(`${entry.parentPath.slice(sourceRoot.pathname.length)}/${entry.name}`, sourceRoot), 'utf8');
+    assert.doesNotMatch(source, /href=["']\/qr\/?["']/);
+  }
+});
