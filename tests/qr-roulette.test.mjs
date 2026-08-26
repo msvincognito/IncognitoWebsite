@@ -222,4 +222,5 @@ test('an unexpected result-rendering error restores the spin control and shows r
   assert.equal(page.root.dataset.state, 'ready');
   assert.equal(page.elements.get('[data-spin]').disabled, false);
   assert.equal(page.elements.get('[data-error]').hidden, false);
+  assert.equal(page.elements.get('[data-result]').hidden, false);
 });

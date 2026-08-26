@@ -137,6 +137,7 @@ export function initializeQrRoulette(options = {}) {
   }
 
   function recover() {
+    elements.result.hidden = false;
     elements.error.hidden = false;
     elements.spin.disabled = false;
     setState('ready');
