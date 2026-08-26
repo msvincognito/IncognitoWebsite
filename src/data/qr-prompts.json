@@ -1,0 +1,53 @@
+{
+  "contentStatus": "sample",
+  "categories": [
+    {
+      "category": "Student life",
+      "color": "#ef3b8f",
+      "prompts": [
+        "What surprised you most about student life in Maastricht?",
+        "What is one thing every new student should try?"
+      ]
+    },
+    {
+      "category": "Campus",
+      "color": "#155eef",
+      "prompts": [
+        "Where is your favorite place to study on campus?",
+        "What would make a day at university better?"
+      ]
+    },
+    {
+      "category": "Technology",
+      "color": "#5746d8",
+      "prompts": [
+        "Which piece of technology could you not live without?",
+        "What technology are you curious to learn more about?"
+      ]
+    },
+    {
+      "category": "Future",
+      "color": "#f57a32",
+      "prompts": [
+        "What would you love to be doing five years from now?",
+        "Which skill would you like to learn next?"
+      ]
+    },
+    {
+      "category": "Just for fun",
+      "color": "#0f9d8a",
+      "prompts": [
+        "What is a small thing that always makes your day better?",
+        "Which fictional world would you visit for a weekend?"
+      ]
+    },
+    {
+      "category": "Incognito",
+      "color": "#0b3f75",
+      "prompts": [
+        "What would you like a study association to organize?",
+        "What makes you feel welcome at an event?"
+      ]
+    }
+  ]
+}
