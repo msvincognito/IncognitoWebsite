@@ -25,6 +25,7 @@ const serializedCategories = JSON.stringify(categories);
             <text
               x={segment.labelX}
               y={segment.labelY}
+              fill={segment.labelColor}
               transform={`rotate(${segment.labelRotation} ${segment.labelX} ${segment.labelY})`}
               text-anchor="middle"
               dominant-baseline="middle"
@@ -151,7 +152,6 @@ const serializedCategories = JSON.stringify(categories);
   }
 
   .qr-wheel text {
-    fill: #fff;
     font-family: var(--display);
     font-size: 11px;
     font-weight: 900;
@@ -226,7 +226,7 @@ const serializedCategories = JSON.stringify(categories);
   }
 
   .qr-result__category {
-    color: var(--qr-pink);
+    color: #a32967;
     font-size: .72rem;
     font-weight: 900;
     letter-spacing: .14em;

@@ -1,4 +1,34 @@
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
+const DARK_LABEL = '#071526';
+const LIGHT_LABEL = '#ffffff';
+
+function relativeLuminance(hexColor) {
+  const channels = [1, 3, 5].map((offset) => (
+    Number.parseInt(hexColor.slice(offset, offset + 2), 16) / 255
+  )).map((channel) => (
+    channel <= 0.04045
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  ));
+
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(firstColor, secondColor) {
+  const luminances = [relativeLuminance(firstColor), relativeLuminance(secondColor)]
+    .sort((first, second) => second - first);
+  return (luminances[0] + 0.05) / (luminances[1] + 0.05);
+}
+
+export function chooseReadableForeground(backgroundColor) {
+  if (typeof backgroundColor !== 'string' || !HEX_COLOR.test(backgroundColor)) {
+    throw new Error('Readable foreground selection requires a six-digit hex color.');
+  }
+
+  return contrastRatio(backgroundColor, DARK_LABEL) >= contrastRatio(backgroundColor, LIGHT_LABEL)
+    ? DARK_LABEL
+    : LIGHT_LABEL;
+}
 
 export function validatePromptData(data) {
   if (!data || !Array.isArray(data.categories) || data.categories.length < 2) {
@@ -61,6 +91,7 @@ export function createWheelSegments(categories, options = {}) {
     return {
       ...entry,
       index,
+      labelColor: chooseReadableForeground(entry.color),
       path: `M ${center} ${center} L ${round(start.x)} ${round(start.y)} A ${radius} ${radius} 0 ${sliceAngle > 180 ? 1 : 0} 1 ${round(end.x)} ${round(end.y)} Z`,
       labelX: round(label.x),
       labelY: round(label.y),

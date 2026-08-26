@@ -6,6 +6,7 @@ import test from 'node:test';
 import {
   chooseIndex,
   choosePrompt,
+  chooseReadableForeground,
   createWheelSegments,
   initializeQrRoulette,
   validatePromptData,
@@ -14,6 +15,24 @@ import {
 const data = JSON.parse(
   await readFile(new URL('../src/data/qr-prompts.json', import.meta.url), 'utf8'),
 );
+
+function relativeLuminance(hexColor) {
+  const channels = [1, 3, 5].map((offset) => (
+    Number.parseInt(hexColor.slice(offset, offset + 2), 16) / 255
+  )).map((channel) => (
+    channel <= 0.04045
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4
+  ));
+
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(firstColor, secondColor) {
+  const luminances = [relativeLuminance(firstColor), relativeLuminance(secondColor)]
+    .sort((first, second) => second - first);
+  return (luminances[0] + 0.05) / (luminances[1] + 0.05);
+}
 
 test('sample prompt data is valid and editor-facing', () => {
   const categories = validatePromptData(data);
@@ -43,6 +62,26 @@ test('invalid prompt data fails with a useful build-time message', () => {
     }),
     /category 2.*six-digit hex color/i,
   );
+});
+
+test('wheel labels automatically use the higher-contrast brand foreground', () => {
+  const expectedForegrounds = [
+    '#071526',
+    '#ffffff',
+    '#ffffff',
+    '#071526',
+    '#071526',
+    '#ffffff',
+  ];
+
+  const actualForegrounds = data.categories.map(({ color }) => chooseReadableForeground(color));
+  assert.deepEqual(actualForegrounds, expectedForegrounds);
+  assert.ok(data.categories.every(({ color }, index) => (
+    contrastRatio(color, actualForegrounds[index]) >= 4.5
+  )));
+
+  const segments = createWheelSegments(validatePromptData(data));
+  assert.deepEqual(segments.map(({ labelColor }) => labelColor), expectedForegrounds);
 });
 
 test('wheel geometry creates one closed segment and readable label per category', () => {
@@ -87,6 +126,30 @@ test('production build emits an unlisted QR roulette with generated SVG segments
   assert.doesNotMatch(html, /class="site-header"/);
   assert.doesNotMatch(html, /class="site-footer"/);
   assert.match(html, /<script src="\/matomo-consent\.js" defer><\/script>/);
+});
+
+test('built wheel and result labels preserve accessible contrast', async () => {
+  execFileSync('npm', ['run', 'build'], {
+    cwd: new URL('..', import.meta.url),
+    stdio: 'pipe',
+  });
+
+  const html = await readFile(new URL('../dist/qr/index.html', import.meta.url), 'utf8');
+  const labelColors = [...html.matchAll(
+    /<g data-wheel-segment[^>]*>\s*<path[^>]*fill="(#[0-9a-f]{6})"[^>]*><\/path>\s*<text[^>]*fill="(#[0-9a-f]{6})"/gi,
+  )].map(([, background, foreground]) => ({ background, foreground }));
+
+  assert.equal(labelColors.length, data.categories.length);
+  assert.ok(labelColors.every(({ background, foreground }) => (
+    contrastRatio(background, foreground) >= 4.5
+  )));
+  assert.doesNotMatch(html, /\.qr-wheel text\s*\{[^}]*fill\s*:/);
+
+  const resultCategoryColor = html.match(
+    /\.qr-result__category\s*\{[^}]*color:\s*(#[0-9a-f]{6})/i,
+  )?.[1];
+  assert.ok(resultCategoryColor);
+  assert.ok(contrastRatio(resultCategoryColor, '#ffffff') >= 4.5);
 });
 
 class FakeElement {
