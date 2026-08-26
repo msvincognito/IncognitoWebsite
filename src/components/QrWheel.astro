@@ -38,15 +38,16 @@ const serializedCategories = JSON.stringify(categories);
       <button class="qr-spin" type="button" data-spin>Spin</button>
     </div>
 
+    <p class="sr-only" data-announcement aria-live="polite" aria-atomic="true"></p>
+    <p class="qr-result__error" data-error role="alert" hidden>Something interrupted the spin. Please try again.</p>
+
     <div class="qr-result" data-result hidden>
       <p class="qr-result__category" data-result-category></p>
       <p class="qr-result__prompt" data-result-prompt></p>
-      <p class="sr-only" data-announcement aria-live="polite"></p>
       <div class="qr-result__actions">
         <button type="button" data-another>Another prompt</button>
         <button type="button" data-reset>Spin again</button>
       </div>
-      <p class="qr-result__error" data-error hidden>Something interrupted the spin. Please try again.</p>
     </div>
   </div>
 </section>
@@ -278,7 +279,11 @@ const serializedCategories = JSON.stringify(categories);
   }
 
   .qr-result__error {
-    margin-top: .8rem;
+    z-index: 5;
+    width: 100%;
+    padding: .9rem 1rem;
+    border-left: 5px solid #a32929;
+    background: #fff;
     color: #a32929;
     font-size: .8rem;
   }
@@ -307,6 +312,10 @@ const serializedCategories = JSON.stringify(categories);
   .qr-roulette[data-state='result'] .qr-wheel-wrap {
     width: min(44vw, 12rem);
     transform: translateY(-.25rem);
+  }
+
+  .qr-roulette[data-state='result'] .qr-spin {
+    display: none;
   }
 
   .qr-roulette[data-state='result'] .qr-result {

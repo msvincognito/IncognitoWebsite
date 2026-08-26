@@ -1,6 +1,7 @@
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 const DARK_LABEL = '#071526';
 const LIGHT_LABEL = '#ffffff';
+const BLACK_LABEL = '#000000';
 
 function relativeLuminance(hexColor) {
   const channels = [1, 3, 5].map((offset) => (
@@ -25,9 +26,9 @@ export function chooseReadableForeground(backgroundColor) {
     throw new Error('Readable foreground selection requires a six-digit hex color.');
   }
 
-  return contrastRatio(backgroundColor, DARK_LABEL) >= contrastRatio(backgroundColor, LIGHT_LABEL)
-    ? DARK_LABEL
-    : LIGHT_LABEL;
+  if (contrastRatio(backgroundColor, DARK_LABEL) >= 4.5) return DARK_LABEL;
+  if (contrastRatio(backgroundColor, LIGHT_LABEL) >= 4.5) return LIGHT_LABEL;
+  return BLACK_LABEL;
 }
 
 export function validatePromptData(data) {
@@ -111,9 +112,10 @@ export function choosePrompt(prompts, previousPrompt = '', random = Math.random)
   if (!Array.isArray(prompts) || prompts.length === 0) {
     throw new Error('Prompt selection requires at least one prompt.');
   }
-  const candidates = prompts.length > 1
-    ? prompts.filter((prompt) => prompt !== previousPrompt)
-    : prompts;
+  const distinctPrompts = [...new Set(prompts)];
+  const candidates = distinctPrompts.length > 1
+    ? distinctPrompts.filter((prompt) => prompt !== previousPrompt)
+    : distinctPrompts;
   return candidates[chooseIndex(candidates.length, random)];
 }
 
@@ -160,22 +162,24 @@ export function initializeQrRoulette(options = {}) {
     elements.prompt.textContent = previousPrompt;
     elements.announcement.textContent = `${selected.category}. ${previousPrompt}`;
     elements.result.hidden = false;
-    elements.spin.disabled = false;
+    elements.spin.disabled = true;
     elements.segments.forEach((segment, index) => {
       segment.setAttribute('data-selected', String(index === selectedIndex));
     });
     setState('result');
+    elements.another.focus();
   }
 
   function recover() {
-    elements.result.hidden = false;
+    elements.result.hidden = true;
     elements.error.hidden = false;
     elements.spin.disabled = false;
     setState('ready');
+    elements.spin.focus();
   }
 
   function spin() {
-    if (state === 'spinning') return;
+    if (state !== 'ready') return;
     try {
       elements.error.hidden = true;
       elements.result.hidden = true;
@@ -201,15 +205,21 @@ export function initializeQrRoulette(options = {}) {
 
   function anotherPrompt() {
     if (selectedIndex < 0 || state !== 'result') return;
-    showResult();
+    try {
+      showResult();
+    } catch {
+      recover();
+    }
   }
 
   function reset() {
     elements.result.hidden = true;
+    elements.error.hidden = true;
     elements.spin.disabled = false;
     elements.announcement.textContent = '';
     elements.segments.forEach((segment) => segment.setAttribute('data-selected', 'false'));
     setState('ready');
+    elements.spin.focus();
   }
 
   elements.spin.addEventListener('click', spin);
