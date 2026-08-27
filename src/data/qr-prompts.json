@@ -17,7 +17,8 @@
         "Where is your favorite place to study on campus?",
         "What would make a day at university better?",
         "What's the best study spot nobody talks about?",
-        "Where do you go between lectures when you have an hour to kill?"
+        "Where do you go between lectures when you have an hour to kill?",
+        "What is your favourite snack at Lidl bakery?"        
       ]
     },
     {
@@ -71,7 +72,9 @@
         "What's the best way to meet new people at an Incognito event?",
         "What's the best Incognito event you've been to?",
         "You scanned the shirt. Was it worth it?",
-        "If Incognito had a mascot, what should it be?"
+        "If Incognito had a mascot, what should it be?",
+        "How do you receive information about Incognito events most often? (Instagram, Whatsapp, word of mouth, etc.)",
+        "If you were to join Incognito, what would you want to do in the association?"
 
       ]
     }
