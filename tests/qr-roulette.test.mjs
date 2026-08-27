@@ -408,6 +408,7 @@ test('built QR page contains the phone-first transition and accessibility safegu
   assert.match(html, /class="qr-result/);
   assert.match(html, /noindex, nofollow/);
   assert.match(html, /\.qr-roulette\[data-state='result'\] \.qr-spin\s*\{\s*display:\s*none/);
+  assert.match(html, /\.qr-roulette__intro img\s*\{[^}]*height:\s*auto/s);
 });
 
 test('authored public pages do not directly advertise the QR route', async () => {
