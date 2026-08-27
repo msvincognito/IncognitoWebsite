@@ -53,17 +53,17 @@ test('valid programme queries reveal the matching named WhatsApp group', async (
     {
       search: '?programme=dsai',
       name: 'Data Science and Artificial Intelligence',
-      href: 'https://chat.whatsapp.com/CU0IbvOKC6E2RZZ55epVad?s=cl&p=i&ilr=4',
+      href: 'https://go.msvincognito.nl/ddssaaii',
     },
     {
       search: '?programme=cs',
       name: 'Computer Science',
-      href: 'https://chat.whatsapp.com/Hmu4jTXU3CE6zs8NWdxrPk?s=cl&p=i&ilr=4',
+      href: 'https://go.msvincognito.nl/ccss',
     },
     {
       search: '?programme=masters',
       name: 'Master’s students',
-      href: 'https://chat.whatsapp.com/JwHNjVq5OApCpOgQOuAZvQ?s=cl&p=i&ilr=4',
+      href: 'https://go.msvincognito.nl/mmaasstteerr',
     },
   ];
 
