@@ -58,7 +58,15 @@
       "color": "#0b3f75",
       "prompts": [
         "What would you like a study association to organize?",
-        "What makes you feel welcome at an event?"
+        "What makes you feel welcome at an event?",
+        "Describe Incognito in three words.",
+        "What would you add to the Incognito room if there were no budget?",
+        "If you could create a new Incognito committee, what would it do?",
+        "What's the best way to meet new people at an Incognito event?",
+        "What's the best Incognito event you've been to?",
+        "You scanned the shirt. Was it worth it?",
+        "If Incognito had a mascot, what should it be?"
+
       ]
     }
   ]
