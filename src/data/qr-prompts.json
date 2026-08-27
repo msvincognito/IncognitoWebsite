@@ -6,7 +6,8 @@
       "color": "#ef3b8f",
       "prompts": [
         "What surprised you most about student life in Maastricht?",
-        "What is one thing every new student should try?"
+        "What is one thing every new student should try?",
+        "What's something you wish you knew before starting university?"
       ]
     },
     {
@@ -14,7 +15,9 @@
       "color": "#155eef",
       "prompts": [
         "Where is your favorite place to study on campus?",
-        "What would make a day at university better?"
+        "What would make a day at university better?",
+        "What's the best study spot nobody talks about?",
+        "Where do you go between lectures when you have an hour to kill?"
       ]
     },
     {
@@ -22,7 +25,13 @@
       "color": "#5746d8",
       "prompts": [
         "Which piece of technology could you not live without?",
-        "What technology are you curious to learn more about?"
+        "What technology are you curious to learn more about?",
+        "What's your favorite programming language—and defend it.",
+        "Favourite operating system",
+        "Dark mode or light mode?",
+        "What is the worst mistake you have made in programming?",
+        "What's your most embarrassing tech mistake?",
+        "What's the most embrassing thing you have seen in a presentation?"
       ]
     },
     {
@@ -30,7 +39,10 @@
       "color": "#f57a32",
       "prompts": [
         "What would you love to be doing five years from now?",
-        "Which skill would you like to learn next?"
+        "Which skill would you like to learn next?",
+        "What is something you've always wanted to try?",
+        "If money didn't matter, what would you work on?"
+
       ]
     },
     {
