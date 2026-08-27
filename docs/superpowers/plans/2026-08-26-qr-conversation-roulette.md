@@ -369,7 +369,7 @@ Render this stable interface inside a `<section class="qr-roulette" data-qr-roul
 ```astro
 <div class="qr-roulette__intro">
   <img src="/assets/logo-dark.png" alt="MSV Incognito" width="650" height="159" />
-  <p class="qr-roulette__eyebrow">Scan. Spin. Start talking.</p>
+  <p class="qr-roulette__eyebrow">Scan. Spin. Start talking with us.</p>
   <h1>Conversation<br /><em>roulette</em></h1>
   <p>Give the wheel a spin and see where the conversation takes you.</p>
 </div>
