@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import tutors from '../data/tutors.json';
+
+const categories = [
+  { name: 'DSAI + CS YR 1', short: 'Year 1', tone: 'blue' },
+  { name: 'DSAI YR 2', short: 'DSAI 2', tone: 'green' },
+  { name: 'CS YR 2', short: 'CS 2', tone: 'cyan' },
+  { name: 'DSAI + CS YR 3', short: 'Year 3', tone: 'purple' },
+  { name: 'MASTER DSDM', short: 'MSc DSDM', tone: 'pink' },
+  { name: 'MASTER AI', short: 'MSc AI', tone: 'gold' },
+];
+
+const categoryTone = Object.fromEntries(categories.map(({ name, tone }) => [name, tone]));
+const uniqueTutorCount = new Set(tutors.map((tutor) => tutor.name)).size;
+---
+
+<BaseLayout
+  title="Tutors"
+  description="Find an Incognito tutor by programme, course, or name."
+  pageClass="tutors-page"
+  robots="noindex, nofollow, noarchive, nosnippet"
+>
+  <section class="tutor-hero">
+    <div class="tutor-hero__grid" aria-hidden="true"></div>
+    <div class="shell tutor-hero__inner">
+      <div>
+        <p class="eyebrow"><span></span> Academic support · 2026–2027</p>
+        <h1>Find your<br /><em>tutor.</em></h1>
+      </div>
+      <div class="tutor-hero__summary">
+        <p>Search Incognito’s student tutor network by course or study programme, then contact a tutor directly to arrange a session.</p>
+        <dl aria-label="Directory totals">
+          <div><dt>Tutors</dt><dd>{uniqueTutorCount}</dd></div>
+          <div><dt>Listings</dt><dd>{tutors.length}</dd></div>
+          <div><dt>Programmes</dt><dd>{categories.length}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="tutor-directory shell" data-tutor-directory>
+    <div class="tutor-privacy-notice" role="note">
+      <span aria-hidden="true">◎</span>
+      <p><strong>For tutoring enquiries only.</strong> Contact details are revealed on request. Please do not redistribute or use them for unrelated messages.</p>
+    </div>
+
+    <div class="tutor-controls">
+      <label class="tutor-search">
+        <span class="sr-only">Search tutors</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+        <input type="search" placeholder="Search by tutor or course…" autocomplete="off" data-search />
+      </label>
+
+      <label class="tutor-sort">
+        <span>Sort by</span>
+        <select data-sort>
+          <option value="name">Name</option>
+          <option value="courses">Most courses</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="tutor-filters" aria-label="Filter by programme">
+      <button type="button" class="tutor-filter is-all" data-filter="All" aria-pressed="true">All programmes</button>
+      {categories.map((category) => (
+        <button type="button" class={`tutor-filter tone-${category.tone}`} data-filter={category.name} aria-pressed="false">
+          <span aria-hidden="true"></span>{category.short}
+        </button>
+      ))}
+    </div>
+
+    <div class="tutor-results-header">
+      <p data-count aria-live="polite">{tutors.length} listings found</p>
+      <p>Rates are provided by tutors and may be discussed directly.</p>
+    </div>
+
+    <div class="tutor-grid" data-grid>
+      {tutors.map((tutor, id) => (
+        <article
+          class={`tutor-card tone-${categoryTone[tutor.category]}`}
+          data-tutor-card
+          data-tutor-id={id}
+        >
+          <div class="tutor-card__bar" aria-hidden="true"></div>
+          <p class="tutor-card__programme">{tutor.category}</p>
+          <h2>{tutor.name}</h2>
+          <div class="tutor-rate">
+            <span>Expected rate</span>
+            <strong>{tutor.pay}</strong>
+          </div>
+          <div class="tutor-courses">
+            <p>{tutor.courses.length} {tutor.courses.length === 1 ? 'course' : 'courses'}</p>
+            <ul>
+              {tutor.courses.map((course) => <li>{course}</li>)}
+            </ul>
+          </div>
+          <div class="tutor-card__footer">
+            <button type="button" data-show-contact aria-expanded="false">
+              Show contact <span aria-hidden="true">＋</span>
+            </button>
+            <div class="tutor-contact" data-contact hidden></div>
+          </div>
+        </article>
+      ))}
+      <div class="tutor-empty" data-empty hidden>
+        <p class="eyebrow">No matches</p>
+        <h2>Try another course or programme.</h2>
+        <p>Check the spelling, shorten your search, or choose “All programmes”.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import tutors from '../data/tutors.json';
+  import { initializeTutorDirectory } from '../lib/tutor-directory.mjs';
+
+  initializeTutorDirectory(document.querySelector('[data-tutor-directory]'), tutors);
+</script>
+
+<style>
+  .tutors-page {
+    --tutor-blue: #155eef;
+    --tutor-green: #16835d;
+    --tutor-cyan: #087f9c;
+    --tutor-purple: #6d52d9;
+    --tutor-pink: #c72c72;
+    --tutor-gold: #b36c00;
+  }
+
+  .tutor-hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--surface-soft); }
+  .tutor-hero::after { position: absolute; right: -8rem; bottom: -14rem; width: 31rem; height: 31rem; border: 6rem solid color-mix(in srgb, var(--purple) 12%, transparent); border-radius: 50%; content: ''; }
+  .tutor-hero__grid { position: absolute; inset: 0; opacity: .35; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(90deg, #000, transparent 78%); }
+  .tutor-hero__inner { position: relative; z-index: 1; display: grid; min-height: 410px; grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr); align-items: end; gap: clamp(3rem, 7vw, 7rem); padding-block: clamp(4.5rem, 8vw, 7rem); }
+  .tutor-hero h1 { margin-top: 1.2rem; font-size: clamp(4.8rem, 9vw, 8.8rem); }
+  .tutor-hero h1 em { color: var(--blue); font-family: Georgia, serif; font-size: .72em; font-weight: 400; letter-spacing: -.06em; }
+  .tutor-hero__summary > p { max-width: 560px; color: var(--muted); font-size: 1.06rem; }
+  .tutor-hero__summary dl { display: grid; grid-template-columns: repeat(3, 1fr); margin: 2rem 0 0; border-block: 1px solid var(--line); }
+  .tutor-hero__summary dl div { display: flex; flex-direction: column-reverse; padding: 1rem .8rem; border-left: 1px solid var(--line); }
+  .tutor-hero__summary dl div:first-child { border-left: 0; padding-left: 0; }
+  .tutor-hero__summary dt { color: var(--muted); font-size: .65rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+  .tutor-hero__summary dd { margin: 0; font-family: var(--display); font-size: 2rem; font-weight: 900; line-height: 1; }
+
+  .tutor-directory { padding-block: clamp(3rem, 6vw, 6rem) clamp(6rem, 10vw, 10rem); }
+  .tutor-privacy-notice { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 1rem; margin-bottom: 2rem; padding: 1rem 1.2rem; border-left: 4px solid var(--blue); background: var(--sky); color: var(--ink-soft); font-size: .86rem; }
+  .tutor-privacy-notice > span { color: var(--blue); font-size: 1.5rem; }
+  .tutor-privacy-notice strong { color: var(--ink); }
+
+  .tutor-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; }
+  .tutor-search { display: flex; min-height: 58px; align-items: center; gap: .8rem; padding-inline: 1rem; border: 1px solid var(--line); background: var(--surface); transition: border-color .2s ease, box-shadow .2s ease; }
+  .tutor-search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent); }
+  .tutor-search svg { width: 20px; fill: none; stroke: var(--blue); stroke-linecap: round; stroke-width: 1.8; }
+  .tutor-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); }
+  .tutor-search input::placeholder { color: var(--muted); }
+  .tutor-sort { display: flex; min-height: 58px; align-items: center; gap: .8rem; padding-inline: 1rem; border: 1px solid var(--line); background: var(--surface); }
+  .tutor-sort span { color: var(--muted); font-size: .68rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .tutor-sort select { border: 0; outline: 0; background: var(--surface); color: var(--ink); font-weight: 750; }
+
+  .tutor-filters { display: flex; flex-wrap: wrap; gap: .55rem; padding-block: 1rem 2rem; border-bottom: 1px solid var(--line); }
+  .tutor-filter { display: inline-flex; min-height: 38px; align-items: center; gap: .55rem; padding: .55rem .85rem; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: .69rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
+  .tutor-filter:hover { color: var(--ink); transform: translateY(-2px); }
+  .tutor-filter span { width: 7px; height: 7px; background: var(--tone); border-radius: 50%; }
+  .tutor-filter[aria-pressed='true'] { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+  .tutor-filter.is-all[aria-pressed='true'] { border-color: var(--blue); background: var(--blue); color: #fff; }
+
+  .tone-blue { --tone: var(--tutor-blue); }
+  .tone-green { --tone: var(--tutor-green); }
+  .tone-cyan { --tone: var(--tutor-cyan); }
+  .tone-purple { --tone: var(--tutor-purple); }
+  .tone-pink { --tone: var(--tutor-pink); }
+  .tone-gold { --tone: var(--tutor-gold); }
+
+  .tutor-results-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1.4rem; color: var(--muted); font-size: .75rem; }
+  .tutor-results-header [data-count] { color: var(--ink); font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
+  .tutor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+  .tutor-card { position: relative; display: flex; min-width: 0; flex-direction: column; padding: 1.35rem; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 12px 30px transparent; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+  .tutor-card:hover { border-color: color-mix(in srgb, var(--tone) 62%, var(--line)); box-shadow: 0 18px 45px var(--shadow); transform: translateY(-3px); }
+  .tutor-card__bar { position: absolute; inset: -1px -1px auto; height: 4px; background: var(--tone); }
+  .tutor-card__programme { margin-top: .25rem; color: var(--tone); font-size: .65rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .tutor-card h2 { min-height: 2.1em; margin-top: .65rem; font-size: clamp(1.65rem, 2.4vw, 2.25rem); overflow-wrap: anywhere; }
+  .tutor-rate { display: grid; gap: .2rem; margin-top: 1.25rem; padding: .8rem 0; border-block: 1px solid var(--line); }
+  .tutor-rate span, .tutor-courses > p { color: var(--muted); font-size: .62rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+  .tutor-rate strong { font-size: .88rem; line-height: 1.45; }
+  .tutor-courses { padding-block: 1rem 1.2rem; }
+  .tutor-courses ul { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0 0; padding: 0; list-style: none; }
+  .tutor-courses li { padding: .34rem .5rem; background: color-mix(in srgb, var(--tone) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--tone) 24%, transparent); color: var(--ink-soft); font-size: .67rem; font-weight: 700; line-height: 1.3; }
+  .tutor-card__footer { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .tutor-card__footer > button { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: .75rem .85rem; border: 1px solid var(--ink); background: transparent; color: var(--ink); font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s ease, color .2s ease; }
+  .tutor-card__footer > button:hover { background: var(--ink); color: var(--paper); }
+  .tutor-card__footer > button span { color: var(--tone); font-size: 1rem; }
+  .tutor-contact { display: grid; gap: .55rem; }
+  .tutor-contact-link { display: grid; min-width: 0; gap: .1rem; padding: .7rem .8rem; border-left: 3px solid var(--tone); background: var(--surface-soft); color: var(--ink); font-size: .72rem; line-height: 1.35; text-decoration: none; overflow-wrap: anywhere; }
+  .tutor-contact-link:hover { background: color-mix(in srgb, var(--tone) 10%, var(--surface)); }
+  .tutor-contact-label { color: var(--muted); font-size: .58rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+
+  .tutor-empty { grid-column: 1 / -1; padding: clamp(4rem, 9vw, 8rem) 1rem; text-align: center; }
+  .tutor-empty .eyebrow { justify-content: center; color: var(--blue); }
+  .tutor-empty h2 { margin: 1rem auto; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+  .tutor-empty > p:last-child { color: var(--muted); }
+  [hidden] { display: none !important; }
+  .sr-only { position: absolute; overflow: hidden; width: 1px; height: 1px; padding: 0; border: 0; margin: -1px; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+  @media (max-width: 980px) {
+    .tutor-hero__inner { grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+    .tutor-hero__summary { max-width: 680px; }
+    .tutor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 620px) {
+    .tutor-hero__inner { min-height: auto; padding-block: 4rem; }
+    .tutor-hero h1 { font-size: clamp(4rem, 20vw, 6.2rem); }
+    .tutor-controls { grid-template-columns: 1fr; }
+    .tutor-sort { justify-content: space-between; }
+    .tutor-results-header { align-items: flex-start; flex-direction: column; gap: .3rem; }
+    .tutor-grid { grid-template-columns: 1fr; }
+    .tutor-card h2 { min-height: 0; }
+  }
+</style>

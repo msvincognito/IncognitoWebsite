@@ -1,0 +1,1037 @@
+[
+  {
+    "name": "Khalid Hagani",
+    "email": "K.hagani@student.maastrichtuniversity.nl",
+    "phone": "+31643794575",
+    "pay": "15 to 20 euros",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Principles of Data Science",
+      "Numerical Methods",
+      "Software Engineering",
+      "Computational and Cognitive Neuroscience"
+    ]
+  },
+  {
+    "name": "Khalid Hagani",
+    "email": "K.hagani@student.maastrichtuniversity.nl",
+    "phone": "+31643794575",
+    "pay": "15 to 20 euros",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Databases",
+      "Graph Theory",
+      "Probability and Statistics",
+      "Machine Learning",
+      "Reasoning Techniques",
+      "Human Computer Interaction & Affective Computing",
+      "Natural Language Processing",
+      "Linear Programming",
+      "Philosophy & Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Khalid Hagani",
+    "email": "K.hagani@student.maastrichtuniversity.nl",
+    "phone": "+31643794575",
+    "pay": "15 to 20 euros",
+    "category": "CS YR 2",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Louis Nathan Vessah Njoya Tchuente",
+    "email": "v.vessahnjoyatchuente@student.maastrichtuniversity.nl",
+    "phone": "+237657776676",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Logic",
+      "Databases",
+      "Statistics"
+    ]
+  },
+  {
+    "name": "Louis Nathan Vessah Njoya Tchuente",
+    "email": "v.vessahnjoyatchuente@student.maastrichtuniversity.nl",
+    "phone": "+237657776676",
+    "pay": "12",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Databases"
+    ]
+  },
+  {
+    "name": "Louis Nathan Vessah Njoya Tchuente",
+    "email": "v.vessahnjoyatchuente@student.maastrichtuniversity.nl",
+    "phone": "+237657776676",
+    "pay": "12",
+    "category": "CS YR 2",
+    "courses": [
+      "Computer Networks",
+      "Intelligent User Interfaces",
+      "Software Engineering and Architectures",
+      "Cybersecurity"
+    ]
+  },
+  {
+    "name": "Predrag Tomic",
+    "email": "predrag.tomic@student.maastrichtuniversity.nl",
+    "phone": "+31 639649445",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Logic",
+      "Numerical Methods",
+      "Databases"
+    ]
+  },
+  {
+    "name": "Predrag Tomic",
+    "email": "predrag.tomic@student.maastrichtuniversity.nl",
+    "phone": "+31 639649445",
+    "pay": "15",
+    "category": "CS YR 2",
+    "courses": [
+      "Computer Networks",
+      "Software Engineering and Architectures",
+      "Embedded Programming",
+      "Computer Security",
+      "Numerical Methods",
+      "Cybersecurity"
+    ]
+  },
+  {
+    "name": "Eira Gardner",
+    "email": "las.gardner@student.maastrichtuniversity.nl",
+    "phone": "+33640200633",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Introduction to Computer Science",
+      "Computational and Cognitive Neuroscience"
+    ]
+  },
+  {
+    "name": "Eira Gardner",
+    "email": "las.gardner@student.maastrichtuniversity.nl",
+    "phone": "+33640200633",
+    "pay": "14",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Human Computer Interaction & Affective Computing",
+      "Natural Language Processing",
+      "Introduction to Video and Image Processing",
+      "Philosophy & Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Alexandre Kozlowski",
+    "email": "a.kozlowski@student.maastrichtuniversity.nl",
+    "phone": "+32 471 52 77 10",
+    "pay": "12.5",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Computer Architecture",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Nada Dawoud",
+    "email": "n.nadamohamedtahatahadawoud@student.maastrichtuniversity.nl",
+    "phone": "+31684100399",
+    "pay": "13",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Introduction to Computer Science",
+      "Logic",
+      "Linear Algebra",
+      "Software Engineering"
+    ]
+  },
+  {
+    "name": "Nada Dawoud",
+    "email": "n.nadamohamedtahatahadawoud@student.maastrichtuniversity.nl",
+    "phone": "+31684100399",
+    "pay": "13",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Databases",
+      "Probability and Statistics",
+      "Machine Learning",
+      "Reasoning Techniques",
+      "Mathematical Modelling",
+      "Linear Programming",
+      "Philosophy & Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Nada Dawoud",
+    "email": "n.nadamohamedtahatahadawoud@student.maastrichtuniversity.nl",
+    "phone": "+31684100399",
+    "pay": "13",
+    "category": "DSAI + CS YR 3",
+    "courses": [
+      "Intelligent Systems",
+      "Operations Research",
+      "Data Analysis",
+      "Computer Security",
+      "Game Theory",
+      "Recommender Systems",
+      "Large Scale IT and Cloud Computing"
+    ]
+  },
+  {
+    "name": "Anna Balaña Zemanaj",
+    "email": "a.balana@student.maastrichtuniversity.nl",
+    "phone": "+34690089333",
+    "pay": "12€ and 15€ for SSA",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Linear Algebra",
+      "Numerical Methods",
+      "Software Engineering"
+    ]
+  },
+  {
+    "name": "Anna Balaña Zemanaj",
+    "email": "a.balana@student.maastrichtuniversity.nl",
+    "phone": "+34690089333",
+    "pay": "12€ and 15€ for SSA",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Probability and Statistics",
+      "Reasoning Techniques",
+      "Simulation and Statistical Analysis",
+      "Mathematical Modelling",
+      "Linear Programming"
+    ]
+  },
+  {
+    "name": "Anna Balaña Zemanaj",
+    "email": "a.balana@student.maastrichtuniversity.nl",
+    "phone": "+34690089333",
+    "pay": "12€ and 15€ for SSA",
+    "category": "CS YR 2",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Anna Balaña Zemanaj",
+    "email": "a.balana@student.maastrichtuniversity.nl",
+    "phone": "+34690089333",
+    "pay": "12€ and 15€ for SSA",
+    "category": "DSAI + CS YR 3",
+    "courses": [
+      "Intelligent Systems",
+      "Operations Research",
+      "Introduction to Quantum Computing",
+      "Business Process and Knowledge Management"
+    ]
+  },
+  {
+    "name": "Anastasios Vlachmpeis",
+    "email": "vlahbeis.tasos@gmail.com",
+    "phone": "+31 612237615",
+    "pay": "15€ for DSA and Calculus, 11.5€ for Discrete Mathematics, 13€ for everything else",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Logic",
+      "Linear Algebra",
+      "Calculus"
+    ]
+  },
+  {
+    "name": "Gabriel Boroica",
+    "email": "g.boroica@student.maastrichtuniversity.nl",
+    "phone": "+40732314106",
+    "pay": "14-15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Statistics",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Gabriel Boroica",
+    "email": "g.boroica@student.maastrichtuniversity.nl",
+    "phone": "+40732314106",
+    "pay": "14-15",
+    "category": "CS YR 2",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Yossi Tzeel-Krupp",
+    "email": "y.tzeel-krupp@student.maastrichtuniversity.nl",
+    "phone": "+972526222265   +316 11 74 58 31",
+    "pay": "13",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Objects in programming"
+    ]
+  },
+  {
+    "name": "Ștefan Ciobanu",
+    "email": "stefan.ciobanu@student.maastrichtuniversity.nl",
+    "phone": "+40770738859",
+    "pay": "12€-14€/hr is reasonable.",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Computer Architecture",
+      "Statistics",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Nikita Kirillov",
+    "email": "n.kirillov@student.maastrichtuniversity.nl",
+    "phone": "+31 6 29 17 68 54",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Principles of Data Science",
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Eduard Patachia",
+    "email": "e.patachia@student.maastrichtuniversity.nl",
+    "phone": "+40752659831",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Discrete Mathematics",
+      "Logic",
+      "Principles of Data Science",
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Max Slapins",
+    "email": "m.slapins@student.maastrichtuniversity.nl",
+    "phone": "+31 616882117",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Numerical Methods",
+      "Databases",
+      "Statistics",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Max Slapins",
+    "email": "m.slapins@student.maastrichtuniversity.nl",
+    "phone": "+31 616882117",
+    "pay": "12",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "name": "Max Slapins",
+    "email": "m.slapins@student.maastrichtuniversity.nl",
+    "phone": "+31 616882117",
+    "pay": "12",
+    "category": "CS YR 2",
+    "courses": [
+      "Introduction to Artificial Intelligence",
+      "Computer Networks",
+      "Operating Systems",
+      "Embedded Programming",
+      "Parallel Programming",
+      "Numerical Methods",
+      "High Performance Computing"
+    ]
+  },
+  {
+    "name": "Omer Dvir",
+    "email": "o.dvir@student.maastrichtuniversity.nl",
+    "phone": "+31 645963004",
+    "pay": "13",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Viktoria Velikova",
+    "email": "v.surnamevelikova@student.maastrichtuniversity.nl",
+    "phone": "+359888602315",
+    "pay": "13-14€",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Logic",
+      "Calculus",
+      "Linear Algebra",
+      "Computer Architecture",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Khalid Ramadan",
+    "email": "k.ramadan@student.maastrichtuniversity.nl",
+    "phone": "+31686333036",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Procedural programming",
+      "Calculus",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Principles of Data Science",
+      "Software Engineering"
+    ]
+  },
+  {
+    "name": "Mohamed Eldeeb",
+    "email": "m.mohamedabdelhalimsabereldeeb@student.maastrichtuniversity.nl",
+    "phone": "+31684040168",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Calculus"
+    ]
+  },
+  {
+    "name": "Mohamed Eldeeb",
+    "email": "m.mohamedabdelhalimsabereldeeb@student.maastrichtuniversity.nl",
+    "phone": "+31684040168",
+    "pay": "14",
+    "category": "CS YR 2",
+    "courses": [
+      "Computer Security"
+    ]
+  },
+  {
+    "name": "Nicon-David Milandru",
+    "email": "n.milandru@student.maastrichtuniversity.nl",
+    "phone": "+31 6 20171307",
+    "pay": "It depends on the course and the level of preparation required. For introductory courses, I would expect 10/hour, while for more advanced courses, up to 13/hour.",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Databases"
+    ]
+  },
+  {
+    "name": "Hypatia TAM",
+    "email": "hypatia.tam@student.maastrichtuniversity.nl",
+    "phone": "+31 0611721016",
+    "pay": "13-14 depending on BSc/MSc",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Calculus"
+    ]
+  },
+  {
+    "name": "Hypatia TAM",
+    "email": "hypatia.tam@student.maastrichtuniversity.nl",
+    "phone": "+31 0611721016",
+    "pay": "13-14 depending on BSc/MSc",
+    "category": "MASTER DSDM",
+    "courses": [
+      "Data Mining",
+      "Network Science",
+      "Building and Mining Knowledge Graphs"
+    ]
+  },
+  {
+    "name": "Hypatia TAM",
+    "email": "hypatia.tam@student.maastrichtuniversity.nl",
+    "phone": "+31 0611721016",
+    "pay": "13-14 depending on BSc/MSc",
+    "category": "MASTER AI",
+    "courses": [
+      "Intelligent Search & Games",
+      "Advanced Concepts in Machine Learning",
+      "Agent and Multi-Agent Systems",
+      "Data Mining",
+      "Building and Mining Knowledge Graphs",
+      "Network Science"
+    ]
+  },
+  {
+    "name": "Nikolas Zouros",
+    "email": "n.zouros@student.maastrichtuniversity.nl",
+    "phone": "+306949406883",
+    "pay": "10-15 per hour",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Nikolas Zouros",
+    "email": "n.zouros@student.maastrichtuniversity.nl",
+    "phone": "+306949406883",
+    "pay": "10-15 per hour",
+    "category": "CS YR 2",
+    "courses": [
+      "Introduction to Artificial Intelligence",
+      "Intelligent User Interfaces",
+      "Software Engineering and Architectures",
+      "Embedded Programming",
+      "Computer Security",
+      "Parallel Programming",
+      "Principles of Programming Languages",
+      "Numerical Methods",
+      "Cybersecurity"
+    ]
+  },
+  {
+    "name": "Kristian Bek",
+    "email": "k.bek@student.maastrichtuniversity.nl",
+    "phone": "+38664165062",
+    "pay": "~15/hour so about 150-225/a week",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Objects in programming",
+      "Linear Algebra",
+      "Numerical Methods",
+      "Statistics"
+    ]
+  },
+  {
+    "name": "Kristian Bek",
+    "email": "k.bek@student.maastrichtuniversity.nl",
+    "phone": "+38664165062",
+    "pay": "~15/hour so about 150-225/a week",
+    "category": "CS YR 2",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "David Prodan",
+    "email": "d.prodan@student.maastrichtuniversity.nl",
+    "phone": "+40 751933134",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Calculus",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Computer Architecture",
+      "Statistics"
+    ]
+  },
+  {
+    "name": "Vilmos Udvari",
+    "email": "v.udvari@student.maastrichtuniversity.nl",
+    "phone": "+31645709972",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Databases"
+    ]
+  },
+  {
+    "name": "Krasimir Yankov",
+    "email": "k.yankov@student.maastrichtuniversity.nl",
+    "phone": "+31611853022",
+    "pay": "13",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Logic",
+      "Databases"
+    ]
+  },
+  {
+    "name": "Fandio Ngounou David",
+    "email": "d.fandiongounou@student.maastrichtuniversity.nl",
+    "phone": "+49 1575 5821283",
+    "pay": "10",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Procedural programming",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Principles of Data Science"
+    ]
+  },
+  {
+    "name": "Odhran O’Reilly",
+    "email": "o.oreilly@student.Maastrichtuniversity.nl",
+    "phone": "+353873906289",
+    "pay": "10",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Objects in programming",
+      "Computer Architecture"
+    ]
+  },
+  {
+    "name": "Luuk Janssen",
+    "email": "lj.janssen@maastrichtuniversity.nl",
+    "phone": "+31 610653845",
+    "pay": "I expect around 17 per hour",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Data Structures and Algorithms"
+    ]
+  },
+  {
+    "name": "Luuk Janssen",
+    "email": "lj.janssen@maastrichtuniversity.nl",
+    "phone": "+31 610653845",
+    "pay": "I expect around 17 per hour",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Machine Learning",
+      "Natural Language Processing"
+    ]
+  },
+  {
+    "name": "Luuk Janssen",
+    "email": "lj.janssen@maastrichtuniversity.nl",
+    "phone": "+31 610653845",
+    "pay": "I expect around 17 per hour",
+    "category": "CS YR 2",
+    "courses": [
+      "Introduction to Artificial Intelligence",
+      "Principles of Programming Languages",
+      "AI and Machine Learning"
+    ]
+  },
+  {
+    "name": "Ilya Kuznetsov",
+    "email": "i.kuznetsov@student.maastrichtuniversity.nl",
+    "phone": "+31 615305643",
+    "pay": "10-15 euros an hour",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Statistics"
+    ]
+  },
+  {
+    "name": "Leah Goldin",
+    "email": "l.goldin@student.maastrichtuniversity.nl",
+    "phone": "+31627355879",
+    "pay": "10",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Procedural programming",
+      "Logic",
+      "Objects in programming",
+      "Data Structures and Algorithms"
+    ]
+  },
+  {
+    "name": "Leah Goldin",
+    "email": "l.goldin@student.maastrichtuniversity.nl",
+    "phone": "+31627355879",
+    "pay": "10",
+    "category": "CS YR 2",
+    "courses": [
+      "Operating Systems",
+      "Computer Security",
+      "Cybersecurity"
+    ]
+  },
+  {
+    "name": "Valeria Georgiou",
+    "email": "v.georgiou@student.maastrichtuniversity.nl",
+    "phone": "+35799282856",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Valeria Georgiou",
+    "email": "v.georgiou@student.maastrichtuniversity.nl",
+    "phone": "+35799282856",
+    "pay": "14",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Probability and Statistics"
+    ]
+  },
+  {
+    "name": "Valeria Georgiou",
+    "email": "v.georgiou@student.maastrichtuniversity.nl",
+    "phone": "+35799282856",
+    "pay": "14",
+    "category": "CS YR 2",
+    "courses": [
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Juliette Drugmand",
+    "email": "jsl.drugmand@student.maastrichtuniversity.nl",
+    "phone": "+32476053960",
+    "pay": "15 or 20",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Computational and Cognitive Neuroscience"
+    ]
+  },
+  {
+    "name": "Marios Petrides",
+    "email": "m.petrides@student.maastrichtuniversity.nl",
+    "phone": "+35796900541",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Procedural programming",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Databases"
+    ]
+  },
+  {
+    "name": "Marios Petrides",
+    "email": "m.petrides@student.maastrichtuniversity.nl",
+    "phone": "+35796900541",
+    "pay": "12",
+    "category": "DSAI + CS YR 3",
+    "courses": [
+      "Game Theory",
+      "Introduction to Quantum Computing"
+    ]
+  },
+  {
+    "name": "Derrick",
+    "email": "D.ojo-Igbinoba@student.Maastrichtuniversity.nl",
+    "phone": "+31684818002",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Logic",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Derrick",
+    "email": "D.ojo-Igbinoba@student.Maastrichtuniversity.nl",
+    "phone": "+31684818002",
+    "pay": "14",
+    "category": "CS YR 2",
+    "courses": [
+      "Computer Networks",
+      "Operating Systems",
+      "Computer Security"
+    ]
+  },
+  {
+    "name": "Maria Zawadzka",
+    "email": "maria.zawadzka@student.maastrichtuniversity.nl",
+    "phone": "+48787799568",
+    "pay": "I have some tutoring experience, so 12€ would be a great start in my opinion",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Logic"
+    ]
+  },
+  {
+    "name": "Noah Dahner",
+    "email": "n.dahner@student.maastrichtuniversity.nl",
+    "phone": "+32 470 65 09 77",
+    "pay": "14",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Objects in programming",
+      "Linear Algebra"
+    ]
+  },
+  {
+    "name": "Noa Minha",
+    "email": "n.minha@student.maastrichtuniversity.nl",
+    "phone": "+31616270969",
+    "pay": "10 if I do not need to prep any materials, 15 if I do",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Calculus",
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Databases",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "Noa Minha",
+    "email": "n.minha@student.maastrichtuniversity.nl",
+    "phone": "+31616270969",
+    "pay": "10 if I do not need to prep any materials, 15 if I do",
+    "category": "CS YR 2",
+    "courses": [
+      "Introduction to Artificial Intelligence",
+      "Computer Networks",
+      "Operating Systems",
+      "Intelligent User Interfaces",
+      "Software Engineering and Architectures",
+      "Embedded Programming",
+      "Computer Security",
+      "Parallel Programming",
+      "Principles of Programming Languages",
+      "Numerical Methods",
+      "Cybersecurity",
+      "Intelligent Interaction"
+    ]
+  },
+  {
+    "name": "Nguyen Anh Vy",
+    "email": "av.nguyen@student.maastrichtuniversity.nl",
+    "phone": "+31 6 45 47 17 30",
+    "pay": "14.99",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Objects in programming",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Computer Architecture",
+      "Algorithmic Design"
+    ]
+  },
+  {
+    "name": "David Almasi-Fuzi",
+    "email": "d.alamsi-fuzi@student.maastrichtuniversity.nl",
+    "phone": "+36309060154 or +31623563270",
+    "pay": "Around 12-13 an hour",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Objects in programming",
+      "Data Structures and Algorithms",
+      "Numerical Methods"
+    ]
+  },
+  {
+    "name": "Madalina Mihaila",
+    "email": "m.mihaila@student.maastrichtuniversity.nl",
+    "phone": "+31 625159624",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Calculus",
+      "Linear Algebra",
+      "Numerical Methods",
+      "Computational and Cognitive Neuroscience"
+    ]
+  },
+  {
+    "name": "Madalina Mihaila",
+    "email": "m.mihaila@student.maastrichtuniversity.nl",
+    "phone": "+31 625159624",
+    "pay": "12",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Reasoning Techniques",
+      "Human Computer Interaction & Affective Computing",
+      "Mathematical Modelling",
+      "Linear Programming"
+    ]
+  },
+  {
+    "name": "Mabby Deggiovanni",
+    "email": "m.deggiovanni@student.maastricht.nl",
+    "phone": "‎⁨‪+44 7856 653812‬⁩ (Whatsapp only)",
+    "pay": "20/hour",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Computer Science",
+      "Logic",
+      "Linear Algebra",
+      "Numerical Methods",
+      "Databases",
+      "Statistics"
+    ]
+  },
+  {
+    "name": "Mabby Deggiovanni",
+    "email": "m.deggiovanni@student.maastricht.nl",
+    "phone": "‎⁨‪+44 7856 653812‬⁩ (Whatsapp only)",
+    "pay": "20/hour",
+    "category": "CS YR 2",
+    "courses": [
+      "Introduction to Artificial Intelligence",
+      "Operating Systems",
+      "Intelligent User Interfaces",
+      "Software Engineering and Architectures",
+      "Embedded Programming",
+      "Computer Security",
+      "Numerical Methods",
+      "Cybersecurity"
+    ]
+  },
+  {
+    "name": "Maria Brezeanu",
+    "email": "m.brezeanu@student.maastrichtuniversity.nl",
+    "phone": "+40 741 981 149",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Numerical Methods",
+      "Software Engineering"
+    ]
+  },
+  {
+    "name": "Maria Brezeanu",
+    "email": "m.brezeanu@student.maastrichtuniversity.nl",
+    "phone": "+40 741 981 149",
+    "pay": "15",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Human Computer Interaction & Affective Computing",
+      "Linear Programming",
+      "Philosophy & Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Ciulei Ionut Octavian",
+    "email": "o.ciulei@student.maastrichtuniversity.nl",
+    "phone": "+40 732 764 526",
+    "pay": "15",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Principles of Data Science",
+      "Numerical Methods",
+      "Software Engineering"
+    ]
+  },
+  {
+    "name": "Ciulei Ionut Octavian",
+    "email": "o.ciulei@student.maastrichtuniversity.nl",
+    "phone": "+40 732 764 526",
+    "pay": "15",
+    "category": "DSAI YR 2",
+    "courses": [
+      "Human Computer Interaction & Affective Computing",
+      "Linear Programming",
+      "Philosophy & Artificial Intelligence"
+    ]
+  },
+  {
+    "name": "Isaac Tighe",
+    "email": "i.tighe@student.maastrichtuniversity.nl",
+    "phone": "+3538783635314",
+    "pay": "12",
+    "category": "DSAI + CS YR 1",
+    "courses": [
+      "Introduction to Data Science and Artificial Intelligence",
+      "Discrete Mathematics",
+      "Procedural programming",
+      "Logic",
+      "Linear Algebra",
+      "Data Structures and Algorithms",
+      "Numerical Methods"
+    ]
+  }
+]
