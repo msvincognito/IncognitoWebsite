@@ -2,12 +2,51 @@ function normalize(value) {
   return value.toLocaleLowerCase('en').trim();
 }
 
+export function groupTutorListings(listings) {
+  const tutorsByContact = new Map();
+
+  for (const listing of listings) {
+    const key = normalize(listing.email || listing.name);
+    let tutor = tutorsByContact.get(key);
+
+    if (!tutor) {
+      tutor = {
+        name: listing.name,
+        email: listing.email,
+        phone: listing.phone,
+        pay: listing.pay,
+        categories: [],
+        courses: [],
+      };
+      tutorsByContact.set(key, tutor);
+    }
+
+    if (!tutor.categories.includes(listing.category)) tutor.categories.push(listing.category);
+
+    for (const courseName of listing.courses) {
+      let course = tutor.courses.find((candidate) => candidate.name === courseName);
+      if (!course) {
+        course = { name: courseName, categories: [] };
+        tutor.courses.push(course);
+      }
+      if (!course.categories.includes(listing.category)) course.categories.push(listing.category);
+    }
+  }
+
+  return [...tutorsByContact.values()];
+}
+
+export function coursesForCategory(tutor, category = 'All') {
+  if (category === 'All') return tutor.courses;
+  return tutor.courses.filter((course) => course.categories.includes(category));
+}
+
 export function filterTutors(tutors, { category = 'All', query = '' } = {}) {
   const normalizedQuery = normalize(query);
 
   return tutors.filter((tutor) => {
-    const matchesCategory = category === 'All' || tutor.category === category;
-    const searchableText = [tutor.name, tutor.category, ...tutor.courses].join(' ');
+    const matchesCategory = category === 'All' || tutor.categories.includes(category);
+    const searchableText = [tutor.name, ...tutor.categories, ...tutor.courses.map((course) => course.name)].join(' ');
     return matchesCategory && (!normalizedQuery || normalize(searchableText).includes(normalizedQuery));
   });
 }
@@ -21,6 +60,10 @@ export function sortTutors(tutors, sortBy = 'name') {
 
     return first.name.localeCompare(second.name, 'en');
   });
+}
+
+export function tutorCountLabel(count) {
+  return `${count} ${count === 1 ? 'tutor' : 'tutors'} found`;
 }
 
 export function contactLinks(tutor) {
@@ -60,8 +103,24 @@ export function initializeTutorDirectory(root, tutors) {
   const cards = new Map(
     [...root.querySelectorAll('[data-tutor-card]')].map((card) => [Number(card.dataset.tutorId), card]),
   );
-  const indexedTutors = tutors.map((tutor, id) => ({ ...tutor, id }));
+  const indexedTutors = groupTutorListings(tutors).map((tutor, id) => ({ ...tutor, id }));
   let category = 'All';
+
+  const updateCardCourses = (card, tutor, selectedCategory = 'All') => {
+    const visibleCourses = new Set(coursesForCategory(tutor, selectedCategory).map((course) => course.name));
+    const courseItems = [...card.querySelectorAll('[data-course]')];
+    for (const item of courseItems) item.hidden = !visibleCourses.has(item.dataset.course);
+
+    const courseCount = card.querySelector('[data-course-count]');
+    if (courseCount) {
+      const size = visibleCourses.size;
+      courseCount.textContent = `${size} ${size === 1 ? 'course' : 'courses'}`;
+    }
+
+    for (const button of card.querySelectorAll('[data-course-filter]')) {
+      button.setAttribute('aria-pressed', String(button.dataset.courseFilter === selectedCategory));
+    }
+  };
 
   const render = () => {
     const visibleTutors = sortTutors(
@@ -73,7 +132,7 @@ export function initializeTutorDirectory(root, tutors) {
     for (const [id, card] of cards) card.hidden = !visibleIds.has(id);
     for (const tutor of visibleTutors) grid?.append(cards.get(tutor.id));
 
-    if (count) count.textContent = `${visibleTutors.length} ${visibleTutors.length === 1 ? 'listing' : 'listings'} found`;
+    if (count) count.textContent = tutorCountLabel(visibleTutors.length);
     if (empty) empty.hidden = visibleTutors.length !== 0;
   };
 
@@ -83,11 +142,23 @@ export function initializeTutorDirectory(root, tutors) {
     filter.addEventListener('click', () => {
       category = filter.dataset.filter ?? 'All';
       for (const button of filters) button.setAttribute('aria-pressed', String(button === filter));
+      for (const tutor of indexedTutors) {
+        const card = cards.get(tutor.id);
+        if (card) updateCardCourses(card, tutor, 'All');
+      }
       render();
     });
   }
 
   root.addEventListener('click', (event) => {
+    const courseFilter = event.target.closest('[data-course-filter]');
+    if (courseFilter && root.contains(courseFilter)) {
+      const card = courseFilter.closest('[data-tutor-card]');
+      const tutor = indexedTutors[Number(card?.dataset.tutorId)];
+      if (card && tutor) updateCardCourses(card, tutor, courseFilter.dataset.courseFilter ?? 'All');
+      return;
+    }
+
     const button = event.target.closest('[data-show-contact]');
     if (!button || !root.contains(button)) return;
 

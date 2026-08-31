@@ -257,6 +257,7 @@
       "Discrete Mathematics",
       "Logic",
       "Linear Algebra",
+      "DSA",
       "Calculus"
     ]
   },
@@ -1021,7 +1022,7 @@
   {
     "name": "Isaac Tighe",
     "email": "i.tighe@student.maastrichtuniversity.nl",
-    "phone": "+3538783635314",
+    "phone": "+353873635314",
     "pay": "12",
     "category": "DSAI + CS YR 1",
     "courses": [
