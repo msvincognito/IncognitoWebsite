@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const primaryLinks = [
+  {
+    label: 'Get your tickets here',
+    description: 'Book your place at upcoming Incognito events.',
+    href: 'https://tickets.msvincognito.nl/incognito',
+    external: true,
+    accent: 'blue',
+  },
+];
+
+const usefulLinks = [
+  {
+    label: 'Find a tutor',
+    description: 'Browse available tutors by course and programme year.',
+    href: '/tutors',
+    external: false,
+    accent: 'purple',
+  },
+  {
+    label: 'Become a tutor',
+    description: 'Share your knowledge and support another student.',
+    href: 'https://forms.gle/VBYabxf7uhgMP6to9',
+    external: true,
+    accent: 'pink',
+  },
+  {
+    label: 'MSV Incognito Store',
+    description: 'Merchandise and essentials from the association.',
+    href: 'https://store.msvincognito.nl',
+    external: true,
+    accent: 'orange',
+  },
+];
+
+const socialLinks = [
+  { label: 'Instagram', href: 'https://instagram.com/msvincognito', mark: 'IG' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/msv-incognito/', mark: 'IN' },
+  { label: 'Email', href: 'mailto:incognito@maastrichtuniversity.nl', mark: '@' },
+];
+---
+
+<BaseLayout
+  title="Links"
+  description="Tickets, student resources, social media, and useful links from MSV Incognito."
+  pageClass="links-page"
+>
+  <section class="links-hub">
+    <div class="links-hub__grid" aria-hidden="true"></div>
+    <div class="shell links-hub__shell">
+      <header class="links-profile reveal">
+        <div class="links-profile__mark">
+          <img class="links-profile__logo--light" src="/assets/logo-dark.png" alt="" width="650" height="159" />
+          <img class="links-profile__logo--dark" src="/assets/logo.svg" alt="" width="650" height="159" />
+        </div>
+        <div>
+          <p class="eyebrow"><span></span> Everything Incognito</p>
+          <h1>Find your<br /><em>next thing.</em></h1>
+          <p>Tickets, tutoring, merchandise, and the places where our community stays connected.</p>
+        </div>
+      </header>
+
+      <div class="links-directory reveal reveal-delay">
+        <section class="links-group" aria-labelledby="featured-links">
+          <div class="links-group__heading">
+            <p class="links-group__number">01</p>
+            <h2 id="featured-links">Coming up</h2>
+          </div>
+          <div class="links-stack">
+            {primaryLinks.map((link) => (
+              <a
+                class={`hub-link hub-link--featured hub-link--${link.accent}`}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                data-external={link.external ? '' : undefined}
+              >
+                <span class="hub-link__copy"><strong>{link.label}</strong><small>{link.description}</small></span>
+                <span class="hub-link__arrow" aria-hidden="true">↗</span>
+                {link.external && <span class="sr-only"> (opens in a new tab)</span>}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section class="links-group" aria-labelledby="useful-links">
+          <div class="links-group__heading">
+            <p class="links-group__number">02</p>
+            <h2 id="useful-links">Useful links</h2>
+          </div>
+          <div class="links-stack">
+            {usefulLinks.map((link) => (
+              <a
+                class={`hub-link hub-link--${link.accent}`}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                data-external={link.external ? '' : undefined}
+              >
+                <span class="hub-link__copy"><strong>{link.label}</strong><small>{link.description}</small></span>
+                <span class="hub-link__arrow" aria-hidden="true">{link.external ? '↗' : '→'}</span>
+                {link.external && <span class="sr-only"> (opens in a new tab)</span>}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <nav class="social-links" aria-label="Follow MSV Incognito">
+          <p class="eyebrow">Stay connected</p>
+          <div>
+            {socialLinks.map((link) => (
+              <a href={link.href} target="_blank" rel="noopener noreferrer" data-external>
+                <span aria-hidden="true">{link.mark}</span>
+                {link.label}
+                <i aria-hidden="true">↗</i>
+                <span class="sr-only"> (opens in a new tab)</span>
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
