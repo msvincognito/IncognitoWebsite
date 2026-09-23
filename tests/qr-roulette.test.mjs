@@ -151,7 +151,7 @@ test('production build emits an unlisted QR roulette with generated SVG segments
   assert.ok(html.indexOf('data-error') < html.indexOf('data-result hidden'));
   assert.doesNotMatch(html, /class="site-header"/);
   assert.doesNotMatch(html, /class="site-footer"/);
-  assert.match(html, /<script src="\/matomo-consent\.js" defer><\/script>/);
+  assert.doesNotMatch(html, /matomo-consent\.js|analytics\.msvincognito\.nl|matomo\.php/i);
 });
 
 test('built wheel and result labels preserve accessible contrast', async () => {
@@ -400,7 +400,6 @@ test('built QR page contains the phone-first transition and accessibility safegu
   assert.match(html, /viewport-fit=cover/);
   assert.match(html, /prefers-reduced-motion:\s*reduce/);
   assert.match(html, /env\(safe-area-inset-bottom\)/);
-  assert.match(html, /body\.qr-page #incognito-privacy-settings/);
   assert.match(html, /min-width:\s*760px\) and \(max-height:\s*950px/);
   assert.match(html, /data-state="ready"/);
   assert.match(html, /data-result[^>]*hidden/);
