@@ -1,0 +1,111 @@
+[
+  {
+    "id": "summer-september-2026",
+    "title": "Summer–September 2026",
+    "members": [
+      {
+        "id": "vlad-stoica",
+        "name": "Vlad Stoica",
+        "tasks": [
+          "Organised and worked at Intro Camp.",
+          "Organised the Blue Party event.",
+          "Managed Incognito’s external and internal affairs."
+        ]
+      },
+      {
+        "id": "iva-papukchieva",
+        "name": "Iva Papukchieva",
+        "tasks": [
+          "Worked on the ski trip.",
+          "Handled Incognito’s internal affairs.",
+          "Provided help and guidance to new board members."
+        ]
+      },
+      {
+        "id": "cinar-akinoglu",
+        "name": "Cinar Akinoglu",
+        "tasks": [
+          "Helped organise and worked at Intro Camp.",
+          "Distributed leftovers from camp and stored and transported Incognito’s supplies.",
+          "Kept in contact with FSE associations.",
+          "Provided advice and planning for the Halloween party.",
+          "Helped organise the Blue Party.",
+          "Provided advice and guidance to the board."
+        ]
+      },
+      {
+        "id": "eduard-patachia",
+        "name": "Eduard Patachia",
+        "tasks": [
+          "Helped at Intro Camp.",
+          "Wrote a few emails.",
+          "Tried to help at the Blue Party."
+        ]
+      },
+      {
+        "id": "patryk-kolosovski",
+        "name": "Patryk Kolosovski",
+        "tasks": [
+          "Managed dozens of payments from the Incognito bank account.",
+          "Handled accounting and bookkeeping in September."
+        ]
+      },
+      {
+        "id": "sofia-gavasi",
+        "name": "Sofia Gavasi",
+        "tasks": [
+          "Worked at Intro Camp.",
+          "Organised a master’s after-exam event.",
+          "Reached out to Master@Work participants about their experience."
+        ]
+      },
+      {
+        "id": "mohammad-sanaye-abbasi",
+        "name": "Mohammad Sanaye Abbasi",
+        "tasks": [
+          "Modified existing services, including the email service, password manager, calendar, and new Git service.",
+          "Set up new services: an Affine board, URL shortener, invoice manager, and storage system.",
+          "Helped with the location for Intro Camp.",
+          "Helped prepare many activities before Intro Camp.",
+          "Worked on preparations for Intro Camp.",
+          "Worked at Intro Camp.",
+          "Conducted a committee presentation.",
+          "Created a structure for the Purple Phoenix collaboration."
+        ]
+      },
+      {
+        "id": "lilly-schulze",
+        "name": "Lilly Schulze",
+        "tasks": [
+          "Worked at Intro Camp.",
+          "Organised an Inkoffieto.",
+          "Helped at the Blue Party.",
+          "Was in contact with SEAL about the Halloween party and its organisation."
+        ]
+      },
+      {
+        "id": "michael-herlea",
+        "name": "Michael Herlea",
+        "tasks": [
+          "Organised a speaker talk.",
+          "Participated in Intro Camp.",
+          "Communicated with ASML about a speaker talk in April.",
+          "Attempted to get ComputD’s attention.",
+          "Contributed to a committee presentation."
+        ]
+      },
+      {
+        "id": "isaac-tighe",
+        "name": "Isaac Tighe",
+        "tasks": [
+          "Organised the ski trip.",
+          "Provided exam recaps for Graph Theory and Discrete Maths.",
+          "Provided exam preparation for Discrete Maths, PrP, Operating Systems, and Graph Theory.",
+          "Worked at Intro Camp.",
+          "Helped a little at the Blue Party, though less than Lilly.",
+          "Helped Mohammad with some reorganisation of the Wiki."
+        ]
+      }
+    ]
+  }
+]

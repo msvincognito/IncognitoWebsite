@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import phases from '../data/board-accomplishments.json';
+
+// Keep reporting phases in newest-first order; member IDs are scoped to each phase.
+const memberAnchor = (phaseId: string, memberId: string) => `${phaseId}-${memberId}`;
+---
+
+<BaseLayout
+  title="33rd Board — Accomplishments"
+  description="Reported contributions of Incognito’s 33rd board, organised by reporting phase and member."
+  pageClass="board-report-page"
+  robots="noindex, nofollow, noarchive, nosnippet"
+>
+  <div data-pagefind-ignore>
+    <section class="report-hero">
+      <div class="shell">
+        <div class="report-hero__top">
+          <p class="eyebrow"><span></span> MSV Incognito · Board report</p>
+          <details class="report-notice" data-report-notice>
+            <summary aria-controls="report-disclaimer">About this report <span aria-hidden="true">ⓘ</span></summary>
+            <div class="report-notice__content" id="report-disclaimer">
+              <p>These tasks were reported by each board member. This page presents their own accounts of their contributions during each reporting phase and may not capture all work undertaken.</p>
+            </div>
+          </details>
+        </div>
+        <div class="report-hero__body">
+          <div>
+            <h1>33rd Board <span>Accomplishments</span></h1>
+            <p class="report-hero__intro">A record of the board’s reported contributions,<br class="desktop-break" /> one reporting phase at a time.</p>
+          </div>
+          <div class="report-hero__edition">
+            <span class="report-hero__numeral" aria-hidden="true">33</span>
+            <p>Contributions &amp; activities</p>
+          </div>
+        </div>
+        <nav class="report-phase-links" aria-label="Jump to a reporting phase">
+          <span>Reporting phases</span>
+          {phases.map((phase) => <a href={`#${phase.id}`}>{phase.title} <span aria-hidden="true">↓</span></a>)}
+        </nav>
+      </div>
+    </section>
+
+    <div class="shell report-body">
+      {phases.map((phase, phaseIndex) => (
+        <section class="report-phase" id={phase.id} aria-labelledby={`${phase.id}-heading`}>
+          <header class="report-phase__header">
+            <p class="eyebrow">Reporting phase <span class="phase-number">{String(phaseIndex + 1).padStart(2, '0')}</span></p>
+            <h2 id={`${phase.id}-heading`}>{phase.title}</h2>
+            <p>Reported contributions by member</p>
+          </header>
+          <div class="report-phase__layout">
+            <nav class="report-member-nav" aria-label={`Members in ${phase.title}`}>
+              <p class="eyebrow">In this report</p>
+              <ol>
+                {phase.members.map((member, index) => (
+                  <li><a href={`#${memberAnchor(phase.id, member.id)}`}><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>{member.name}</a></li>
+                ))}
+              </ol>
+            </nav>
+            <div class="report-members">
+              {phase.members.map((member, index) => (
+                <article class="report-member" id={memberAnchor(phase.id, member.id)} aria-labelledby={`${memberAnchor(phase.id, member.id)}-heading`}>
+                  <header>
+                    <span class="report-member__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                    <h3 id={`${memberAnchor(phase.id, member.id)}-heading`}>{member.name}</h3>
+                  </header>
+                  <ul>{member.tasks.map((task) => <li>{task}</li>)}</ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+      <div class="report-end"><span aria-hidden="true">—</span><p>End of the current reports</p><a href="#main-content">Back to top ↑</a></div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const notice = document.querySelector<HTMLDetailsElement>('[data-report-notice]');
+  const summary = notice?.querySelector('summary');
+  if (notice && summary) {
+    let hovered = false;
+    let focused = false;
+    let pinned = false;
+    let dismissed = false;
+    const update = () => { notice.open = !dismissed && (hovered || focused || pinned); };
+    const close = () => { pinned = false; dismissed = true; update(); };
+
+    notice.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch') return;
+      hovered = true;
+      dismissed = false;
+      update();
+    });
+    notice.addEventListener('pointerleave', () => {
+      hovered = false;
+      update();
+    });
+    notice.addEventListener('focusin', () => {
+      focused = true;
+      dismissed = false;
+      update();
+    });
+    notice.addEventListener('focusout', (event) => {
+      if (event.relatedTarget instanceof Node && notice.contains(event.relatedTarget)) return;
+      focused = false;
+      pinned = false;
+      update();
+    });
+    summary.addEventListener('click', (event) => {
+      event.preventDefault();
+      pinned = !pinned;
+      dismissed = !pinned;
+      update();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && notice.open) close();
+    });
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !notice.contains(event.target)) close();
+    });
+  }
+</script>
+
+<style>
+  .report-hero, .report-body { --report-accent: var(--blue); }
+  :global([data-theme='dark']) .report-hero, :global([data-theme='dark']) .report-body { --report-accent: #7dabff; }
+  .report-hero { background: var(--surface-soft); border-bottom: 1px solid var(--line); }
+  .report-hero__top { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-top: 2rem; }
+  .report-hero__top > .eyebrow { color: var(--report-accent); font-size: .65rem; }
+  .report-notice { position: relative; flex-shrink: 0; z-index: 30; }
+  .report-notice summary { display: flex; align-items: center; gap: .6rem; padding: .6rem 0; color: var(--ink-soft); font-size: .8rem; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent; }
+  .report-notice summary::-webkit-details-marker { display: none; }
+  .report-notice summary > span { color: var(--report-accent); font-size: 1rem; }
+  .report-notice summary:hover { color: var(--report-accent); }
+  .report-notice__content { position: absolute; right: 0; top: 100%; width: min(26rem, calc(100vw - 48px)); padding: 1.3rem 1.5rem; border: 1px solid var(--line); border-top: 3px solid var(--report-accent); background: var(--surface); box-shadow: 0 14px 45px var(--shadow); font-size: .85rem; line-height: 1.65; }
+  .report-hero__body { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; padding-block: clamp(3rem, 7vw, 6rem); }
+  .report-hero h1 { font-size: clamp(3.5rem, 7vw, 6.6rem); }
+  .report-hero h1 span { display: block; margin-top: .4rem; color: var(--report-accent); font-family: Georgia, serif; font-size: .67em; font-weight: 400; font-style: italic; letter-spacing: -.055em; line-height: 1.15; }
+  .report-hero__intro { margin-top: 1.75rem; max-width: 40rem; color: var(--muted); font-size: 1rem; }
+  .report-hero__edition { text-align: center; padding-left: 2rem; border-left: 1px solid var(--line); }
+  .report-hero__numeral { display: block; color: var(--report-accent); font-family: var(--display); font-size: clamp(8rem, 15vw, 13rem); font-weight: 900; line-height: .85; letter-spacing: -.09em; padding-right: .09em; }
+  .report-hero__edition p { margin-top: 1.3rem; color: var(--muted); font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .report-phase-links { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 2rem; padding-block: 1.2rem; border-top: 1px solid var(--line); }
+  .report-phase-links > span { color: var(--muted); font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .report-phase-links a { display: inline-flex; align-items: center; gap: 1.5rem; color: var(--ink); font-size: .85rem; font-weight: 700; text-decoration: none; }
+  .report-phase-links a:hover { color: var(--report-accent); }
+  .report-phase-links a > span { color: var(--report-accent); }
+  .report-body { padding-block: clamp(3rem, 6vw, 5rem) 3rem; }
+  .report-phase { scroll-margin-top: 2rem; }
+  .report-phase + .report-phase { margin-top: 5rem; }
+  .report-phase__header { padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+  .report-phase__header .eyebrow { color: var(--report-accent); font-size: .65rem; }
+  .report-phase__header .phase-number { width: auto; height: auto; background: transparent; letter-spacing: 0; }
+  .report-phase__header h2 { margin-block: .9rem .7rem; font-size: clamp(2rem, 4.5vw, 3.8rem); }
+  .report-phase__header > p:last-child { color: var(--muted); font-size: .85rem; }
+  .report-phase__layout { display: grid; grid-template-columns: 235px minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .report-member-nav { position: sticky; top: 2rem; padding-top: 2rem; }
+  .report-member-nav > p { color: var(--muted); font-size: .6rem; }
+  .report-member-nav ol { padding: 0; margin: 1rem 0 0; list-style: none; }
+  .report-member-nav a { display: flex; align-items: baseline; gap: .75rem; padding-block: .45rem; color: var(--ink-soft); font-size: .75rem; text-decoration: none; line-height: 1.5; }
+  .report-member-nav a span { color: var(--report-accent); font-size: .65rem; font-variant-numeric: tabular-nums; }
+  .report-member-nav a:hover { color: var(--report-accent); text-decoration: underline; text-underline-offset: .2em; }
+  .report-member { scroll-margin-top: 2rem; padding-block: 2rem; border-bottom: 1px solid var(--line); }
+  .report-member > header { display: flex; align-items: baseline; gap: 1rem; }
+  .report-member__number { color: var(--report-accent); font-family: var(--display); font-size: 1.15rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .report-member h3 { font-size: clamp(1.5rem, 2.7vw, 2.15rem); line-height: 1.1; }
+  .report-member ul { display: grid; gap: .55rem; padding-left: 1.2rem; margin-top: 1.25rem; color: var(--ink-soft); font-size: .95rem; line-height: 1.7; }
+  .report-member li { padding-left: .35rem; }
+  .report-member li::marker { color: var(--report-accent); font-size: .75em; }
+  .report-end { display: flex; align-items: center; gap: 1rem; padding-block: 2.5rem 0; color: var(--muted); font-size: .75rem; }
+  .report-end > span { color: var(--report-accent); }
+  .report-end a { margin-left: auto; color: var(--ink-soft); text-underline-offset: .3em; }
+  .report-end a:hover { color: var(--report-accent); }
+  @media (max-width: 850px) {
+    .report-hero__edition { display: none; }
+    .report-hero__body { grid-template-columns: 1fr; }
+    .report-phase__layout { grid-template-columns: 1fr; gap: 0; }
+    .report-member-nav { position: static; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+    .report-member-nav ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
+  }
+  @media (max-width: 520px) {
+    .report-hero__top { align-items: flex-start; flex-direction: column-reverse; gap: 1.2rem; padding-top: 1rem; }
+    .report-notice { align-self: flex-end; }
+    .report-hero__body { padding-block: 2.5rem; }
+    .report-hero h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
+    .report-hero h1 span { font-size: .62em; }
+    .desktop-break { display: none; }
+    .report-phase-links { align-items: flex-start; flex-direction: column; }
+    .report-member-nav ol { grid-template-columns: 1fr; }
+    .report-member { padding-block: 1.5rem; }
+    .report-end { flex-wrap: wrap; }
+  }
+</style>

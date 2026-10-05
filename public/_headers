@@ -18,6 +18,10 @@
 /tutors*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
 
+# Keep the unlinked board report out of compliant search indexes
+/33rd-board-accomplishments*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
 # Sitemaps
 /sitemap-index.xml
   Cache-Control: public, max-age=3600
