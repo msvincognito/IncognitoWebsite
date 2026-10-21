@@ -11,6 +11,7 @@ test('the generated board archive preserves every recorded board back to the fou
 
   const html = await readFile(new URL('../dist/board/index.html', import.meta.url), 'utf8');
   const expectedBoards = [
+    ['32nd Board', '2025–2026'],
     ['31st Board', '2024–2025'],
     ['30th Board', '2023–2024'],
     ['29th Board', '2022–2023'],
@@ -49,6 +50,8 @@ test('the generated board archive preserves every recorded board back to the fou
   }
 
   const historicalMembers = [
+    ['Botond István Moksony', 'President'],
+    ['Alexandru Balan', 'Master Representative'],
     ['Bobby Slavchev', 'President'],
     ['Paul Dibeschl', 'Secretary &amp; IT Commissioner'],
     ['Sidney Jacobs', 'President'],
@@ -78,6 +81,7 @@ test('the generated board archive preserves every recorded board back to the fou
   );
 
   const expectedPhotos = [
+    '32nd-board.jpg',
     'board2018-2019.jpg',
     'board2017-2018.jpg',
     'board2015-2016.png',
